@@ -179,7 +179,8 @@
 
   <div class="horizontal-buttons-container">
     <div class="button horizontal-buttons" id="interact-button" ontouchstart="window.app.sendMessageToScreen('interact')"></div>
-    <div class="button horizontal-buttons" id="jump-button" onclick="jumpButtonImagePressed()" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div>
+    <!-- <div class="button horizontal-buttons" id="jump-button" onclick="jumpButtonImagePressed()" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div> -->
+    <div class="button horizontal-buttons" id="jump-button" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div>
   </div>
 
   <script 
@@ -189,7 +190,15 @@
 
   <script type="text/javascript">
     $( document ).ready(function() {
-      console.log( "ready!" );
+
+      var jumpButton = $("#jump-button");
+
+      jumpButton.trigger(function() {
+        $(this).css("background-image", "url(jump_button_pressed.png)");
+        console.log( "clicked!" );
+      });
+
+      
     });
   </script>
 </body>
