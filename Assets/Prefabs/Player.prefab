@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 543846365
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 179e85ac2a85c954e8523c81bdb28cb4, type: 3}
   m_Color: {r: 0, g: 0.5469738, b: 0.9150943, a: 1}
@@ -97,7 +97,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -115,11 +115,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea6514e316644d78b10a080d1b8a494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: 30
   keyboardControlsOn: 1
   groundedVDelta: 0.01
-  playerSpeed: 3
+  playerSpeed: 3.5
   jumpForce: 20
-  initJumpForce: 150
+  initJumpForce: 400
   maxJumpTime: 0.2
 --- !u!61 &685363375
 BoxCollider2D:
