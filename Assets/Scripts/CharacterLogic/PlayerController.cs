@@ -12,13 +12,17 @@ public class PlayerController : MonoBehaviour
     private bool rightButton;
     private bool jumpButton;
     private bool isJumping;
-    private bool intertactButton;
+    private bool interactButton;
     private int movementDirection;
     private bool collidingWithWallLeft;
     private bool collidingWithWallRight;
     private float jumpTimer;
     private bool grounded;
     private AHoldableObject heldObject;
+    private Color defaultColor;
+
+    private float interactTimer;
+    private bool interacted;
 
     public bool keyboardControlsOn;
 
@@ -48,11 +52,12 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+        defaultColor = gameObject.GetComponent<SpriteRenderer>().color;
     }
 
     void Update()
     {
-
+        GetKeyboardInput();
     }
 
     public void ButtonInput(string input)
@@ -78,15 +83,15 @@ public class PlayerController : MonoBehaviour
                 jumpButton = false;
                 break;
             case "interact":
-                intertactButton = true;
+                interactButton = true;
                 break;
         }
     }
 
     private void FixedUpdate()
     {
-        GetKeyboardInput();
         Movement();
+        InteractActions();
     }
 
     private void GetKeyboardInput()
@@ -110,9 +115,9 @@ public class PlayerController : MonoBehaviour
                 rightButton = false;
                 leftButton = false;
             }
-            if (Input.GetKey(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                intertactButton = true;
+                interactButton = true;
             }
         }
     }
@@ -129,6 +134,7 @@ public class PlayerController : MonoBehaviour
                 grounded = false;
                 isJumping = true;
                 rigidBody.AddForce(transform.up * initJumpForce);
+                jumpTimer = 0;
             }
 
             if (isJumping && jumpTimer <= maxJumpTime)
@@ -136,6 +142,10 @@ public class PlayerController : MonoBehaviour
                 jumpTimer += Time.fixedDeltaTime;
 
                 rigidBody.AddForce(transform.up * jumpForce);
+            }
+            else
+            {
+                jumpButton = false;
             }
 
         }
@@ -148,12 +158,29 @@ public class PlayerController : MonoBehaviour
 
     private void InteractActions()
     {
-        if (intertactButton)
+        if (interactButton)
         {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+            interacted = true;
+            interactTimer = 0;
+
             if (heldObject)
             {
                 heldObject.Use(this);
                 heldObject = null;
+            }
+
+            interactButton = false;
+
+        }
+        if(interacted)
+        {
+            interactTimer += Time.fixedDeltaTime;
+            if(interactTimer >= .1)
+            {
+                gameObject.GetComponent<SpriteRenderer>().color = defaultColor;
+                interacted = false;
+                interactTimer = 0;
             }
         }
     }
