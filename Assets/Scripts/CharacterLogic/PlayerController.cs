@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //Track if the player capsule is currently inside the transparent sphere or not
-    void OnTriggerEnter(Collider trigger)
+    void OnTriggerEnte(Collider trigger)
     {
         if (trigger.tag == "PlatformSphere")
         {
