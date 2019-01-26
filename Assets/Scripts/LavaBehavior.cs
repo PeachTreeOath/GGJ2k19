@@ -16,16 +16,19 @@ public class LavaBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       Movement();
+       Expand();
     }
 
-   private void Movement()
+   private void Expand()
    {
-      transform.Translate(Vector3.up * speed * Time.deltaTime);
+      transform.localScale += new Vector3(0, speed * Time.deltaTime, 0);
    }
 
    private void OnTriggerEnter2D(Collider2D collision)
    {
-      Debug.Log("Lava collided with " + collision.name);
+      if (collision.tag == "Player")
+      {
+         Debug.Log("Lava collided with " + collision.name);
+      }
    }
 }
