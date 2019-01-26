@@ -25,11 +25,11 @@ public class LavaBehavior : MonoBehaviour
       transform.localScale += new Vector3(0, speed * Time.deltaTime, 0);
    }
 
-   private void OnTriggerEnter2D(Collider2D other)
+   private void OnCollisionEnter2D(Collision2D other)
    {
-      if (other.tag == "Player")
+      if (other.gameObject.tag == "Player")
       {
-         Debug.Log("Lava collided with " + other.name);
+         Debug.Log("Lava collided with Player");
       }
    }
 }
