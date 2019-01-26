@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //Track if the player capsule is currently inside the transparent sphere or not
-    void OnTriggerEnte(Collider trigger)
+    void OnTriggerEnter2d(Collider2D trigger)
     {
         if (trigger.tag == "PlatformSphere")
         {
@@ -199,7 +199,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider trigger)
+    void OnTriggerExit2D(Collider2D trigger)
     {
         if (trigger.tag == "PlatformSphere")
         {
