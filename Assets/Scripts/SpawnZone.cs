@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class SpawnZone : MonoBehaviour
+public class SpawnZone : Singleton<SpawnZone>
 {
     [SerializeField]
     public List<Rect> spawnZones = new List<Rect>();
@@ -39,7 +39,7 @@ public class SpawnZone : MonoBehaviour
 
         Rect zone = WeightedRandomizer.From(weights).TakeOne();
 
-        spawnPos = new Vector2(Random.Range(zone.xMin, zone.xMax), Random.Range(zone.xMin, zone.yMax));
+        spawnPos = new Vector2(Random.Range(zone.xMin, zone.xMax), Random.Range(zone.yMin, zone.yMax));
 
         return spawnPos; 
     }
