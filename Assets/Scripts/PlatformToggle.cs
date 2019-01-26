@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformToggle : MonoBehaviour
+public class PlatformToggle : Singleton<PlatformToggle>
 {
+    private Renderer rend;
+    private BoxCollider2D col;
+
     [SerializeField]
     private GameObject[] platformObjects;
 
@@ -12,20 +15,14 @@ public class PlatformToggle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-      if (platformToggleOn)
-      {
-         ActivatePlatformObjects();
-      }
+        for (int i = 0; i < platformObjects.Length; i++)
+        {
+            platformObjects[i].SetActive(false);
+        }
     }
 
     // turn on all the platform objects in the scene
-    private void ActivatePlatformObjects()
+    public void ActivatePlatformObjects()
     {
        for (int i = 0; i < platformObjects.Length; i++)
        {

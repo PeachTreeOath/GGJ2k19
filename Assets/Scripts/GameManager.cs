@@ -30,6 +30,8 @@ public class GameManager : Singleton<GameManager>
 
             Image ttleImage = title.GetComponent<Image>();
             ttleImage.enabled = false;
+
+            PlatformToggle.instance.ActivatePlatformObjects();
         }
     }
 }
