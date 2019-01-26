@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     private bool collidingWithWallRight;
     private int jumpCount;
     private bool grounded;
-
     [SerializeField]
     private float groundedVDelta = 0.01f;
 
@@ -28,6 +27,12 @@ public class PlayerController : MonoBehaviour
     private float jumpForce = 350f;
 
     private bool isInSphere;
+
+    public HoldableObject HeldObject { get; } = HoldableObject.none;
+
+    public int MovementDirection { get; }
+
+
 
     private void Start()
     {
