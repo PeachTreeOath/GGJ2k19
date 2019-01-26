@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using NDream.AirConsole;
 using Newtonsoft.Json.Linq;
 
@@ -39,6 +40,7 @@ public float spawnHeight = 2f;
 
 		//Instantiate player prefab, store device id + player script in a dictionary
 		GameObject newPlayer = Instantiate (playerPrefab, SpawnZone.instance.GetSpawnLocation(), transform.rotation) as GameObject;
+		newPlayer.GetComponentInChildren<TextMeshProUGUI>().text = AirConsole.instance.GetNickname(deviceID);
 		players.Add(deviceID, newPlayer.GetComponent<PlayerController>());
 	}
 
