@@ -15,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Lava
+  - Player
+  - Floatable
+  - StaticObject
   - 
   - 
   - 
@@ -42,4 +42,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Lava
+    uniqueID: 705358745
     locked: 0

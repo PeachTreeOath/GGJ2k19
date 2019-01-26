@@ -16,6 +16,10 @@ public class FloatBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        while(floatingTime-- <= 0)
+        {
+            //BoxCollider2D collider = GetComponentInChildren<BoxCollider2D>();
+           // collider.size -= new Vector2(0, 0.1f);
+        }
     }
 }
