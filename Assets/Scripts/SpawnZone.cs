@@ -29,7 +29,6 @@ public class SpawnZone : Singleton<SpawnZone>
             totalArea += item.height * item.width;
         }
 
-        int i = 0;
         foreach(Rect item in spawnZones)
         {
             float itemArea = item.height * item.width;

@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private bool collidingWithWallRight;
     private float jumpTimer;
     private bool grounded;
-    private AHoldableObject heldObject;
+    public AHoldableObject heldObject;
     private Color defaultColor;
 
     private float interactTimer;
@@ -46,8 +46,6 @@ public class PlayerController : MonoBehaviour
     private float maxJumpTime = .2f;
 
     private bool isInSphere;
-
-    public HoldableObject HeldObject { get; } = HoldableObject.none;
 
     public int MovementDirection { get; }
 
@@ -189,6 +187,23 @@ public class PlayerController : MonoBehaviour
                 heldObject.Use(this);
                 heldObject = null;
             }
+            else
+            {
+                Collider2D[] colliders = new Collider2D[30];
+                ContactFilter2D filter = new ContactFilter2D();
+                filter.layerMask = LayerMask.GetMask("Interactable");
+                filter.useLayerMask = true;
+
+                gameObject.GetComponent<BoxCollider2D>().OverlapCollider(filter, colliders);
+
+                foreach(Collider2D item in colliders)
+                {
+                    if(item.gameObject.tag == "Interactable")
+                    {
+                        item.gameObject.GetComponent<AInteractableObject>().Interact(this);
+                    }
+                }
+            }
 
             interactButton = false;
 
@@ -211,11 +226,6 @@ public class PlayerController : MonoBehaviour
         if (trigger.tag == "PlatformSphere")
         {
             isInSphere = true;
-        }
-        if (trigger.tag == "HoldableObject")
-        {
-            trigger.gameObject.GetComponent<AHoldableObject>().PickUp(this);
-            heldObject = trigger.GetComponent<AHoldableObject>();
         }
     }
 

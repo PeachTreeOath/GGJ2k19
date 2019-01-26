@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestHoldableObject : AHoldableObject
+public class TestingTossableObject : ATossableObject
 {
-
+   
 }
