@@ -7,6 +7,8 @@ public class LavaBehavior : MonoBehaviour
    [SerializeField]
    private float speed = 0.1f;
 
+   public bool lavaRising {get; set;}
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,10 @@ public class LavaBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       Expand();
+       if (lavaRising)
+       {
+          Expand();
+       }
     }
 
    // basic lava expanding behavior
@@ -25,11 +30,11 @@ public class LavaBehavior : MonoBehaviour
       transform.localScale += new Vector3(0, speed * Time.deltaTime, 0);
    }
 
-   private void OnCollisionEnter2D(Collision2D other)
+   private void OnTriggerEnter2D(Collider2D other)
    {
-      if (other.gameObject.tag == "Player")
+      if (other.tag == "Player")
       {
-         Debug.Log("Lava collided with Player");
+         Debug.Log("Lava collided with " + other.name);
       }
    }
 }
