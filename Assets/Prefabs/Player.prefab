@@ -118,7 +118,9 @@ MonoBehaviour:
   keyboardControlsOn: 0
   groundedVDelta: 0.01
   playerSpeed: 0.1
-  jumpForce: 350
+  jumpForce: 30
+  initJumpForce: 200
+  maxJumpTime: 0.2
 --- !u!61 &685363375
 BoxCollider2D:
   m_ObjectHideFlags: 0
