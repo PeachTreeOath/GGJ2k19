@@ -52,6 +52,9 @@ TagManager:
   - name: Player
     uniqueID: 543846365
     locked: 0
+  - name: Throwables
+    uniqueID: 1367685241
+    locked: 0
   - name: Lava
     uniqueID: 705358745
     locked: 0
