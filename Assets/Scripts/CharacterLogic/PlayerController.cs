@@ -46,27 +46,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (keyboardControlsOn)
-        {
-            if (Input.GetAxis("Horizontal") > 0)
-                ButtonInput("right");
 
-            if (Input.GetAxis("Horizontal") < 0)
-                ButtonInput("left");
-
-            if (Input.GetKey(KeyCode.Space))
-                ButtonInput("jump");
-
-            if (Input.GetAxis("Horizontal") == 0)
-            {
-                rightButton = false;
-                leftButton = false;
-            }
-            if(Input.GetKey(KeyCode.F))
-            {
-                intertactButton = true;
-            }
-        }
     }
 
     public void ButtonInput(string input)
@@ -96,9 +76,34 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        GetKeyboardInput();
         Movement();
     }
 
+    private void GetKeyboardInput()
+    {
+        if (keyboardControlsOn)
+        {
+            if (Input.GetAxis("Horizontal") > 0)
+                ButtonInput("right");
+
+            if (Input.GetAxis("Horizontal") < 0)
+                ButtonInput("left");
+
+            if (Input.GetKey(KeyCode.Space))
+                ButtonInput("jump");
+
+            if (Input.GetAxis("Horizontal") == 0)
+            {
+                rightButton = false;
+                leftButton = false;
+            }
+            if (Input.GetKey(KeyCode.F))
+            {
+                intertactButton = true;
+            }
+        }
+    }
     private void Movement()
     {
         movementDirection = Convert.ToInt32(rightButton) - Convert.ToInt32(leftButton);
@@ -117,9 +122,9 @@ public class PlayerController : MonoBehaviour
 
     private void InteractActions()
     {
-        if(intertactButton)
+        if (intertactButton)
         {
-            if(heldObject)
+            if (heldObject)
             {
                 heldObject.Use(this);
                 heldObject = null;
@@ -134,7 +139,7 @@ public class PlayerController : MonoBehaviour
         {
             isInSphere = true;
         }
-        if(trigger.tag == "HoldableObject")
+        if (trigger.tag == "HoldableObject")
         {
             trigger.gameObject.GetComponent<AHoldableObject>().PickUp(this);
             heldObject = trigger.GetComponent<AHoldableObject>();
