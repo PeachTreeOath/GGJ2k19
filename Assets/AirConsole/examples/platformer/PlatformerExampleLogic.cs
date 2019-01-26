@@ -10,6 +10,8 @@ public class PlatformerExampleLogic : MonoBehaviour {
 
 	public Dictionary<int, PlayerController> players = new Dictionary<int, PlayerController> (); 
 
+public float spawnHeight = 2f;
+
 	void Awake () {
 		AirConsole.instance.onMessage += OnMessage;		
 		AirConsole.instance.onReady += OnReady;		
@@ -36,7 +38,7 @@ public class PlatformerExampleLogic : MonoBehaviour {
 		}
 
 		//Instantiate player prefab, store device id + player script in a dictionary
-		GameObject newPlayer = Instantiate (playerPrefab, transform.position, transform.rotation) as GameObject;
+		GameObject newPlayer = Instantiate (playerPrefab, transform.position + new Vector3(0,spawnHeight,0), transform.rotation) as GameObject;
 		players.Add(deviceID, newPlayer.GetComponent<PlayerController>());
 	}
 

@@ -40,6 +40,18 @@ public class PlayerController : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
+void Update()
+{
+    if(Input.GetAxis("Horizontal") > 0)
+    ButtonInput("right");
+
+    if(Input.GetAxis("Horizontal") < 0)
+    ButtonInput("left");
+    
+    if(Input.GetKey(KeyCode.Space))
+    ButtonInput("jump");
+}
+
     public void ButtonInput(string input)
     {
         switch (input)

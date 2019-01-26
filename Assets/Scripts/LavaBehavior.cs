@@ -23,4 +23,9 @@ public class LavaBehavior : MonoBehaviour
    {
       transform.Translate(Vector3.up * speed * Time.deltaTime);
    }
+
+   private void OnTriggerEnter2D(Collider2D collision)
+   {
+      Debug.Log("Lava collided with " + collision.name);
+   }
 }
