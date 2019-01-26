@@ -11,10 +11,12 @@ public class PlayerController : MonoBehaviour
     private bool leftButton;
     private bool rightButton;
     private bool jumpButton;
+    private bool isJumping;
     private bool intertactButton;
     private int movementDirection;
     private bool collidingWithWallLeft;
     private bool collidingWithWallRight;
+    private float jumpTimer;
     private bool grounded;
     private AHoldableObject heldObject;
 
@@ -24,10 +26,16 @@ public class PlayerController : MonoBehaviour
     private float groundedVDelta = 0.01f;
 
     [SerializeField]
-    private float playerSpeed = 0.1f;
+    private float playerSpeed = 1f;
 
     [SerializeField]
-    private float jumpForce = 350f;
+    private float jumpForce = 35f;
+
+    [SerializeField]
+    private float initJumpForce = 200f;
+
+    [SerializeField]
+    private float maxJumpTime = .2f;
 
     private bool isInSphere;
 
@@ -40,8 +48,6 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
-        GameObject.Find("TestingObjectHoldable").GetComponent<TestHoldableObject>().PickUp(this);
-        heldObject = GameObject.Find("TestingObjectHoldable").GetComponent<TestHoldableObject>();
     }
 
     void Update()
@@ -68,6 +74,9 @@ public class PlayerController : MonoBehaviour
             case "jump":
                 jumpButton = true;
                 break;
+            case "jump-up":
+                jumpButton = false;
+                break;
             case "interact":
                 intertactButton = true;
                 break;
@@ -90,8 +99,11 @@ public class PlayerController : MonoBehaviour
             if (Input.GetAxis("Horizontal") < 0)
                 ButtonInput("left");
 
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
                 ButtonInput("jump");
+
+            if (Input.GetKeyUp(KeyCode.Space))
+                ButtonInput("jump-up");
 
             if (Input.GetAxis("Horizontal") == 0)
             {
@@ -104,6 +116,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
     private void Movement()
     {
         movementDirection = Convert.ToInt32(rightButton) - Convert.ToInt32(leftButton);
@@ -114,9 +127,22 @@ public class PlayerController : MonoBehaviour
             if (grounded)
             {
                 grounded = false;
+                isJumping = true;
+                rigidBody.AddForce(transform.up * initJumpForce);
+            }
+
+            if (isJumping && jumpTimer <= maxJumpTime)
+            {
+                jumpTimer += Time.fixedDeltaTime;
+
                 rigidBody.AddForce(transform.up * jumpForce);
             }
-            jumpButton = false;
+
+        }
+        else
+        {
+            jumpTimer = 0;
+            isJumping = false;
         }
     }
 

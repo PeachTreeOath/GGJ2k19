@@ -115,10 +115,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea6514e316644d78b10a080d1b8a494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyboardControlsOn: 0
+  keyboardControlsOn: 1
   groundedVDelta: 0.01
-  playerSpeed: 0.1
-  jumpForce: 350
+  playerSpeed: 2
+  jumpForce: 35
+  initJumpForce: 200
+  maxJumpTime: 0.2
 --- !u!61 &685363375
 BoxCollider2D:
   m_ObjectHideFlags: 0
