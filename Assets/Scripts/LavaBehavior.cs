@@ -19,16 +19,17 @@ public class LavaBehavior : MonoBehaviour
        Expand();
     }
 
+   // basic lava expanding behavior
    private void Expand()
    {
       transform.localScale += new Vector3(0, speed * Time.deltaTime, 0);
    }
 
-   private void OnTriggerEnter2D(Collider2D collision)
+   private void OnTriggerEnter2D(Collider2D other)
    {
-      if (collision.tag == "Player")
+      if (other.tag == "Player")
       {
-         Debug.Log("Lava collided with " + collision.name);
+         Debug.Log("Lava collided with " + other.name);
       }
    }
 }
