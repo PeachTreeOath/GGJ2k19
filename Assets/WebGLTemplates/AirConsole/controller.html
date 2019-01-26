@@ -68,6 +68,9 @@
     background-size: cover;
     background-position: center;
   }
+  #jump-button:hover {
+    background-image: url("/jump_button_pressed.png");
+  }
 
 /*  #jump-button-image{
     right: 0;
@@ -193,10 +196,25 @@
 
       var jumpButton = $("#jump-button");
 
-      jumpButton.trigger(function() {
-        $(this).css("background-image", "url(jump_button_pressed.png)");
-        console.log( "clicked!" );
-      });
+      // jumpButton.on("click"), function() {
+      //   $(this).css("background-image", "url(jump_button_pressed.png)");
+      //   console.log("clicked!");
+      // }
+
+      // jumpButton.trigger("click");
+      // setTimeout(function() {
+      //   jumpButton.trigger('click');  
+      // }, 8000);
+
+      // jumpButton.click(function() {
+        // $(this).css("background-image", "url(jump_button_pressed.png)");
+        // $(this).attr('id', 'jump-button-pressed');
+        // console.log( "clicked!" );
+        // $(this).attr('id', 'jump-button');
+      // });
+      // setTimeout(function() {
+      //   jumpButton.removeAttr( "jump-button-pressed" );
+      // }, 80);
 
       
     });
