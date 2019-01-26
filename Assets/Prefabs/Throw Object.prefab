@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5078609785156458886}
   - component: {fileID: 4577697055578885609}
   - component: {fileID: 2941167050749021122}
-  - component: {fileID: 8173117788471222917}
+  - component: {fileID: 2688147758840575476}
   m_Layer: 0
   m_Name: Throw Object
   m_TagString: HoldableObject
@@ -129,7 +129,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8173117788471222917
+--- !u!114 &2688147758840575476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,8 +138,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1308606690626483707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 032ef78409fa24f668738f356276cfc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 0295f549ec1c448a59e96c74ad90c907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdLocation: {x: 0, y: 0}
-  tossForce: 0
+  holdLocation: {x: 0.2, y: 0}
+  tossForce: 50
