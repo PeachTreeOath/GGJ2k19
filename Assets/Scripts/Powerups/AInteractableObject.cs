@@ -23,15 +23,21 @@ public abstract class AInteractableObject : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().color = defaultColor;
         }
+        
+        Collider2D[] colliders = new Collider2D[30];
+        ContactFilter2D filter = new ContactFilter2D();
+
+        Collider2D box = gameObject.GetComponent<Collider2D>();
+        Physics2D.OverlapBox(box.bounds.center, box.bounds.size, 0, filter, colliders);
+
+        playerNear = false;
+        foreach (Collider2D item in colliders)
+        {
+            if (item && item.gameObject.tag == "Player")
+            {
+                playerNear = true;
+            }
+        }
     }
     public abstract void Interact(PlayerController player);
-
-    public virtual void OnTriggerStay2D(Collider2D collision)
-    {
-        playerNear |= collision.gameObject.tag == "Player";
-    }
-    public virtual void OnTriggerExit2D(Collider2D collision)
-    {
-        playerNear &= collision.gameObject.tag != "Player";
-    }
 }
