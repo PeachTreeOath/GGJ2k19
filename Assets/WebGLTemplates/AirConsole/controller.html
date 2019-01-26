@@ -31,6 +31,13 @@
     height: 100%;
   }
 
+  .horizontal-buttons-container {
+    width: 50%;
+  }
+  .horizontal-buttons {
+    height: 50%;
+  }
+
   #left-button{
 /*    left: 0;
     width: 25%;
@@ -39,6 +46,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+  }
+  #left-button:active{
+    background-image: url("/left_button_pressed.png");
   }
 
   #right-button{
@@ -50,12 +60,8 @@
     background-size: cover;
     background-position: center;
   }
-
-  .horizontal-buttons-container {
-    width: 50%;
-  }
-  .horizontal-buttons {
-    height: 50%;
+  #right-button:active{
+    background-image: url("/right_button_pressed.png");
   }
 
   #jump-button{
@@ -68,7 +74,7 @@
     background-size: cover;
     background-position: center;
   }
-  #jump-button:hover {
+  #jump-button:active {
     background-image: url("/jump_button_pressed.png");
   }
 
@@ -79,33 +85,14 @@
     height: 100%;
   }*/
 
-  #jump-button-image-pressed{
-    /*right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;*/
-    background-image: url("/jump_button_pressed.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
-
-  #jump-button-pressed{
-    /*right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;*/
-    background-image: url("/jump_button_pressed.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
-
   #interact-button{
     background-image: url("/interact_button.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+  }
+  #interact-button:active{
+    background-image: url("/interact_button_pressed.png");
   }
 
   .button-text{
