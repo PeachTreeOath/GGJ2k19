@@ -118,7 +118,7 @@ MonoBehaviour:
   keyboardControlsOn: 0
   groundedVDelta: 0.01
   playerSpeed: 0.1
-  jumpForce: 30
+  jumpForce: 35
   initJumpForce: 200
   maxJumpTime: 0.2
 --- !u!61 &685363375
