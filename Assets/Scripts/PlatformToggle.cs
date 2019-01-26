@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlatformToggle : MonoBehaviour
 {
-    private Renderer rend;
-    private BoxCollider2D col;
-
     [SerializeField]
     private GameObject[] platformObjects;
 
@@ -15,10 +12,7 @@ public class PlatformToggle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       rend = GetComponent<Renderer>();
-       col = GetComponent<BoxCollider2D>();
-       rend.enabled = false;
-       col.enabled = false;
+
     }
 
     // Update is called once per frame
