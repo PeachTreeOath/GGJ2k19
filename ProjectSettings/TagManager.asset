@@ -48,6 +48,9 @@ TagManager:
   - name: Furniture
     uniqueID: 2491790115
     locked: 0
+  - name: Player
+    uniqueID: 543846365
+    locked: 0
   - name: Lava
     uniqueID: 705358745
     locked: 0

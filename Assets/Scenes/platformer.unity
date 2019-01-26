@@ -131,7 +131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4362763096764304, guid: d88c1d1b0f4f4466781a6766e3723fd2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.7
+      value: -2.1
       objectReference: {fileID: 0}
     - target: {fileID: 4362763096764304, guid: d88c1d1b0f4f4466781a6766e3723fd2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -172,6 +172,16 @@ PrefabInstance:
     - target: {fileID: 4362763096764304, guid: d88c1d1b0f4f4466781a6766e3723fd2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7460876419433399469, guid: d88c1d1b0f4f4466781a6766e3723fd2,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 543846365
+      objectReference: {fileID: 0}
+    - target: {fileID: 7460876419433399469, guid: d88c1d1b0f4f4466781a6766e3723fd2,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d88c1d1b0f4f4466781a6766e3723fd2, type: 3}
@@ -242,23 +252,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6915385408965270191, guid: 3a3e3d82c28554f45a168dd19f6f0a39,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 6915385408965270191, guid: 3a3e3d82c28554f45a168dd19f6f0a39,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 6915385408965270191, guid: 3a3e3d82c28554f45a168dd19f6f0a39,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8093869173202902412, guid: 3a3e3d82c28554f45a168dd19f6f0a39, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a3e3d82c28554f45a168dd19f6f0a39, type: 3}
 --- !u!1001 &1824872893073505868
 PrefabInstance:
