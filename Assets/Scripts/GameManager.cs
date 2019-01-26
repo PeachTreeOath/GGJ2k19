@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
     bool gameStarted;
 
     private LavaBehavior lava;
+
+    [SerializeField]
+    private GameObject title;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +27,9 @@ public class GameManager : Singleton<GameManager>
 
             Debug.Log("Starting Lava");
             lava.lavaRising = true;
+
+            Image ttleImage = title.GetComponent<Image>();
+            ttleImage.enabled = false;
         }
     }
 }
