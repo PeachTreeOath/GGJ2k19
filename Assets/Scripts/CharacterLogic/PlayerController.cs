@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+        //GameObject.Find("TestingObjectHoldable").GetComponent<TestHoldableObject>().PickUp(this);
     }
 
 void Update()
