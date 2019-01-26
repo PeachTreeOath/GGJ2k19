@@ -6,7 +6,7 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
-    private CapsuleCollider2D capsuleCollider;
+    private Collider2D col;
 
     private bool leftButton;
     private bool rightButton;
@@ -39,15 +39,13 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        col = GetComponent<Collider2D>();
         GameObject.Find("TestingObjectHoldable").GetComponent<TestHoldableObject>().PickUp(this);
         heldObject = GameObject.Find("TestingObjectHoldable").GetComponent<TestHoldableObject>();
     }
 
     void Update()
     {
-        BoxCollider2D col = GetComponent<BoxCollider2D>();
-        col.size = Vector3.zero;
         if (keyboardControlsOn)
         {
             if (Input.GetAxis("Horizontal") > 0)
