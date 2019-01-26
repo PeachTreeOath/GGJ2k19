@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     public bool keyboardControlsOn;
 
+    public bool facingRight = true;
+
     [SerializeField]
     public float groundedVDelta = 0.01f;
 
@@ -127,6 +129,12 @@ public class PlayerController : MonoBehaviour
     private void Movement()
     {
         movementDirection = Convert.ToInt32(rightButton) - Convert.ToInt32(leftButton);
+
+        if (movementDirection == 1)
+            facingRight = true;
+        else if(movementDirection == -1)
+            facingRight = false;
+
         transform.Translate(new Vector2(playerSpeed * movementDirection * Time.fixedDeltaTime, 0));
 
         if (jumpButton)
@@ -191,10 +199,9 @@ public class PlayerController : MonoBehaviour
             {
                 Collider2D[] colliders = new Collider2D[30];
                 ContactFilter2D filter = new ContactFilter2D();
-                filter.layerMask = LayerMask.GetMask("Interactable");
-                filter.useLayerMask = true;
 
-                gameObject.GetComponent<BoxCollider2D>().OverlapCollider(filter, colliders);
+                BoxCollider2D box = gameObject.GetComponent<BoxCollider2D>();
+                Physics2D.OverlapBox(box.bounds.center, box.bounds.size, 0, filter, colliders);
 
                 foreach(Collider2D item in colliders)
                 {
