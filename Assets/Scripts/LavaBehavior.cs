@@ -7,6 +7,7 @@ public class LavaBehavior : MonoBehaviour
    [SerializeField]
    private float speed = 0.1f;
 
+   private const double LAVA_DAMAGE = 10;
    public bool lavaRising {get; set;}
 
     // Start is called before the first frame update
@@ -30,11 +31,24 @@ public class LavaBehavior : MonoBehaviour
       transform.localScale += new Vector3(0, speed * Time.deltaTime, 0);
    }
 
-   private void OnTriggerEnter2D(Collider2D other)
-   {
-      if (other.tag == "Player")
-      {
-         Debug.Log("Lava collided with " + other.name);
-      }
-   }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        applyDamage(other.gameObject);
+    }
+
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        applyDamage(other.gameObject);
+    }
+
+    private void applyDamage(GameObject gameObject)
+    {
+        if (gameObject.tag == "Player")
+        {
+            PlayerController pc = gameObject.GetComponent<PlayerController>();
+            pc.takeDamage(LAVA_DAMAGE);
+            Debug.Log("Lava collided with " + gameObject.name);
+        }
+    }
 }
