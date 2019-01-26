@@ -102,10 +102,17 @@ public class PlayerController : MonoBehaviour
         {
             isInSphere = false;
         }
-
     }
 
-    private void OnCollisionStay(Collision collision)
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            grounded = false;
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Wall")
         {
