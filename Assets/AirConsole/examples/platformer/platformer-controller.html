@@ -20,6 +20,16 @@
     z-index: -1;
   }
 
+  #dead-view {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .view {
+    display:none;
+  }
+
   .button{
     background: #3B3B3B;
     border: solid #1f1f1f 2px;
@@ -101,6 +111,11 @@
 
       me.airconsole.onMessage = function(from, data) {
         console.log("onMessage", from, data);
+
+		// Check if the data, we sent, contains view
+	    if (data.view) {
+	      showView(data.view);
+		}
       };
 
       /*
@@ -140,6 +155,27 @@
       this.airconsole.message(AirConsole.SCREEN, {"action": msg});
     };
 
+	var showView = function(id) {
+	  var view = document.getElementById(id);
+	  var all_views = document.querySelectorAll('view');
+      // Hide all containers
+	  for (var i=0; i<all_views.length; i++) {
+        all_views[i].style.display = 'none';
+	  }
+  
+	  // Show container
+	  view.style.display = 'block';
+	};
+	// Show the view with the id 'loading_view':
+	showView('alive_view');
+	// A button to switch to the ingame view
+	var my_button = document.getElementById('go_to_game');
+	  my_button.addEventListener('touchstart', function() {
+	  showView('dead_view');
+	});
+
+
+
   </script>
 
  
@@ -156,5 +192,14 @@
     <div class="button horizontal-buttons" id="jump-button" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div>
   </div>
 
+  <div id="dead_view" class="view">You're dead!</div>
+  <div id="alive_view" class="view">Controller ...
+	  <div class="button" id="left-button" ontouchstart="window.app.sendMessageToScreen('left')" ontouchend="window.app.sendMessageToScreen('left-up')"></div>
+	  <div class="button" id="right-button" ontouchstart="window.app.sendMessageToScreen('right')" ontouchend="window.app.sendMessageToScreen('right-up')"></div>
+	  <div class="button" id="jump-button" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div>
+	  <div class="button" id="interact-button" ontouchstart="window.app.sendMessageToScreen('interact')"></div>
+  </div>
+
+  
 </body>
 </html>
