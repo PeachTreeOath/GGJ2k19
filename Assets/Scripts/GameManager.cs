@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using NDream.AirConsole;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -24,6 +26,12 @@ public class GameManager : Singleton<GameManager>
         if (!gameStarted && Input.GetKeyDown(KeyCode.Return))
         {
             gameStarted = true;
+
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject player in players)
+            {
+                Destroy(player.GetComponentInChildren<Canvas>());
+            }
 
             Debug.Log("Starting Lava");
             lava.lavaRising = true;
