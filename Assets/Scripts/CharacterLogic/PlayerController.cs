@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     private bool collidingWithWallRight;
     private bool grounded;
     private AHoldableObject heldObject;
+    private bool isJumping;
+    private float jumpTimer;
+    private float maxJumpTime = 1;
 
     public bool keyboardControlsOn;
 
@@ -40,8 +43,6 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
-        GameObject.Find("TestingObjectHoldable").GetComponent<TestHoldableObject>().PickUp(this);
-        heldObject = GameObject.Find("TestingObjectHoldable").GetComponent<TestHoldableObject>();
     }
 
     void Update()
@@ -90,6 +91,9 @@ public class PlayerController : MonoBehaviour
             case "jump":
                 jumpButton = true;
                 break;
+            case "jump-up":
+                jumpButton = false;
+                break;
             case "interact":
                 intertactButton = true;
                 break;
@@ -111,10 +115,22 @@ public class PlayerController : MonoBehaviour
             if (grounded)
             {
                 grounded = false;
+                isJumping = true;
+            }
+
+            if (jumpTimer <= maxJumpTime)
+            {
+                jumpTimer += Time.fixedDeltaTime;
+
                 rigidBody.AddForce(transform.up * jumpForce);
             }
-            jumpButton = false;
+
         }
+        else
+        {
+            jumpTimer = 0;
+        }
+
     }
 
     private void InteractActions()
