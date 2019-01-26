@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4362763096764304}
   - component: {fileID: 33866194385368994}
   - component: {fileID: 23110335328481398}
-  - component: {fileID: 114828151363311678}
   - component: {fileID: 729678981}
   - component: {fileID: 729678982}
+  - component: {fileID: 3023144101720782246}
   m_Layer: 0
   m_Name: PlayerCapsule
   m_TagString: Untagged
@@ -80,18 +80,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &114828151363311678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018172500222856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc5d0864cc8934039b036f722f168be7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &729678981
 Rigidbody2D:
   serializedVersion: 4
@@ -129,3 +117,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &3023144101720782246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018172500222856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea6514e316644d78b10a080d1b8a494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundedVDelta: 0.01
+  playerSpeed: 0.1
+  jumpForce: 350
