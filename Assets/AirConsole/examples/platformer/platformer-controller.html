@@ -44,6 +44,10 @@
   	bottom: 0;
   	width: 100%;
   	height: 100%;
+    background-image: url("/jump_button.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
   }
 
   #interact-button{
@@ -114,7 +118,7 @@
   <div id="background"></div>
   <div class="button" id="left-button" ontouchstart="window.app.sendMessageToScreen('left')" ontouchend="window.app.sendMessageToScreen('left-up')"></div>
   <div class="button" id="right-button" ontouchstart="window.app.sendMessageToScreen('right')" ontouchend="window.app.sendMessageToScreen('right-up')"></div>
-  <div class="button" id="jump-button" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"><img src="jump_button.png" id="jump-button-image" onContextMenu="return false;" /></div>
+  <div class="button" id="jump-button" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div>
   <div class="button" id="interact-button" ontouchstart="window.app.sendMessageToScreen('interact')"></div>
 </body>
 </html>

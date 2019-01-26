@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidBody;
     private Collider2D col;
 
+    [SerializeField]
+    public double playerHealth = 30;
+
     private bool leftButton;
     private bool rightButton;
     private bool jumpButton;
@@ -22,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private Color defaultColor;
 
     private float interactTimer;
+    private float damageTimer;
     private bool interacted;
 
     public bool keyboardControlsOn;
@@ -153,6 +157,22 @@ public class PlayerController : MonoBehaviour
         {
             jumpTimer = 0;
             isJumping = false;
+        }
+    }
+
+    public void takeDamage(double damageValue)
+    {
+        float currentTime = Time.time;
+        if (currentTime >= damageTimer + 1)
+        {
+            damageTimer = currentTime;
+            Debug.Log("Player taking damage");
+            playerHealth -= damageValue;
+            if (playerHealth <= 0)
+            {
+                Debug.Log("Player dead");
+                Destroy(this.gameObject);
+            }
         }
     }
 
