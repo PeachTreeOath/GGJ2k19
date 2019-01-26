@@ -15,8 +15,10 @@ public class PlayerController : MonoBehaviour
     private int movementDirection;
     private bool collidingWithWallLeft;
     private bool collidingWithWallRight;
-    private int jumpCount;
     private bool grounded;
+
+    public bool keyboardControlsOn;
+
     [SerializeField]
     private float groundedVDelta = 0.01f;
 
@@ -33,7 +35,6 @@ public class PlayerController : MonoBehaviour
     public int MovementDirection { get; }
 
 
-
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -41,17 +42,28 @@ public class PlayerController : MonoBehaviour
         //GameObject.Find("TestingObjectHoldable").GetComponent<TestHoldableObject>().PickUp(this);
     }
 
-void Update()
-{
-    if(Input.GetAxis("Horizontal") > 0)
-    ButtonInput("right");
+    void Update()
+    {
+        BoxCollider2D col = GetComponent<BoxCollider2D>();
+        col.size = Vector3.zero;
+        if (keyboardControlsOn)
+        {
+            if (Input.GetAxis("Horizontal") > 0)
+                ButtonInput("right");
 
-    if(Input.GetAxis("Horizontal") < 0)
-    ButtonInput("left");
-    
-    if(Input.GetKey(KeyCode.Space))
-    ButtonInput("jump");
-}
+            if (Input.GetAxis("Horizontal") < 0)
+                ButtonInput("left");
+
+            if (Input.GetKey(KeyCode.Space))
+                ButtonInput("jump");
+
+            if (Input.GetAxis("Horizontal") == 0)
+            {
+                rightButton = false;
+                leftButton = false;
+            }
+        }
+    }
 
     public void ButtonInput(string input)
     {
@@ -85,14 +97,8 @@ void Update()
 
     private void Movement()
     {
-        if (grounded)
-        {
-            jumpCount = 0;
-        }
-
         movementDirection = Convert.ToInt32(rightButton) - Convert.ToInt32(leftButton);
-
-        rigidBody.MovePosition(rigidBody.position + new Vector2(playerSpeed * movementDirection, 0));
+        transform.Translate(new Vector2(playerSpeed * movementDirection * Time.fixedDeltaTime, 0));
 
         if (jumpButton)
         {
