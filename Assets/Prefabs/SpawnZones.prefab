@@ -40,22 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3562691642472473307}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e39019a8ca5ec4179b4128b8de2846ee, type: 3}
+  m_Script: {fileID: 11500000, guid: b4f6f75355be8604db4e57dad48616cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnZones:
-  - serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  - serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  - serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
+  spawnZones: []
