@@ -243,8 +243,8 @@ MonoBehaviour:
   floatingTime: 5
   sinkSpeed: 0.5
   touchingLava: 0
-  bobTime: 0.75
-  currentBobTime: 0
+  sinkDelayTime: 0.75
+  currentSinkDelayTime: 0
 --- !u!1001 &1785383991804907739
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -22,7 +22,6 @@ public class FloatBehavior : MonoBehaviour
     [SerializeField]
     private float sinkDelayTime;
 
-    [SerializeField]
     private float currentSinkDelayTime;
 
     // Start is called before the first frame update
