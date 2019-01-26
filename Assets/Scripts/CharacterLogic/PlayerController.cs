@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private bool collidingWithWallLeft;
     private bool collidingWithWallRight;
     private bool grounded;
+    private AHoldableObject heldObject;
 
     public bool keyboardControlsOn;
 
@@ -39,7 +40,8 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
-        //GameObject.Find("TestingObjectHoldable").GetComponent<TestHoldableObject>().PickUp(this);
+        GameObject.Find("TestingObjectHoldable").GetComponent<TestHoldableObject>().PickUp(this);
+        heldObject = GameObject.Find("TestingObjectHoldable").GetComponent<TestHoldableObject>();
     }
 
     void Update()
@@ -61,6 +63,10 @@ public class PlayerController : MonoBehaviour
             {
                 rightButton = false;
                 leftButton = false;
+            }
+            if(Input.GetKey(KeyCode.F))
+            {
+                intertactButton = true;
             }
         }
     }
@@ -111,12 +117,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void InteractActions()
+    {
+        if(intertactButton)
+        {
+            if(heldObject)
+            {
+                heldObject.Use(this);
+                heldObject = null;
+            }
+        }
+    }
+
     //Track if the player capsule is currently inside the transparent sphere or not
     void OnTriggerEnter(Collider trigger)
     {
         if (trigger.tag == "PlatformSphere")
         {
             isInSphere = true;
+        }
+        if(trigger.tag == "HoldableObject")
+        {
+            trigger.gameObject.GetComponent<AHoldableObject>().PickUp(this);
+            heldObject = trigger.GetComponent<AHoldableObject>();
         }
     }
 
