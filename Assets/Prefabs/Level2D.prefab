@@ -110,6 +110,8 @@ MonoBehaviour:
   sinkSpeed: 0.5
   touchingLava: 0
   sinkDelayTime: 0.75
+  floatXMove: 1
+  xMoveAmount: 0.005
 --- !u!50 &2385252979551489844
 Rigidbody2D:
   serializedVersion: 4
@@ -173,6 +175,8 @@ MonoBehaviour:
   sinkSpeed: 0.5
   touchingLava: 0
   sinkDelayTime: 0.75
+  floatXMove: 1
+  xMoveAmount: 0.005
 --- !u!1 &1725692460764084135
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +279,8 @@ MonoBehaviour:
   sinkSpeed: 0.5
   touchingLava: 0
   sinkDelayTime: 0.75
+  floatXMove: 1
+  xMoveAmount: 0.005
 --- !u!50 &1375674981279624064
 Rigidbody2D:
   serializedVersion: 4
@@ -385,6 +391,8 @@ MonoBehaviour:
   sinkSpeed: 0.5
   touchingLava: 0
   sinkDelayTime: 0.75
+  floatXMove: 1
+  xMoveAmount: 0.005
 --- !u!50 &883254767
 Rigidbody2D:
   serializedVersion: 4
@@ -448,6 +456,8 @@ MonoBehaviour:
   sinkSpeed: 0.5
   touchingLava: 0
   sinkDelayTime: 0.75
+  floatXMove: 1
+  xMoveAmount: 0.005
 --- !u!50 &6426301353088630929
 Rigidbody2D:
   serializedVersion: 4
@@ -511,6 +521,8 @@ MonoBehaviour:
   sinkSpeed: 0.5
   touchingLava: 0
   sinkDelayTime: 0.75
+  floatXMove: 1
+  xMoveAmount: 0.005
 --- !u!1001 &1725692460685993653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1061,11 +1073,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1725692460764084134}
     m_Modifications:
-    - target: {fileID: 4651654931375850507, guid: 063071ba684a54a45b2b02412924a997,
-        type: 3}
-      propertyPath: m_Name
-      value: Lamp (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 8868116245911215904, guid: 063071ba684a54a45b2b02412924a997,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1120,6 +1127,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4651654931375850507, guid: 063071ba684a54a45b2b02412924a997,
+        type: 3}
+      propertyPath: m_Name
+      value: Lamp (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 063071ba684a54a45b2b02412924a997, type: 3}
@@ -1221,11 +1233,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1725692460764084134}
     m_Modifications:
-    - target: {fileID: 4651654931375850507, guid: 063071ba684a54a45b2b02412924a997,
-        type: 3}
-      propertyPath: m_Name
-      value: Lamp
-      objectReference: {fileID: 0}
     - target: {fileID: 8868116245911215904, guid: 063071ba684a54a45b2b02412924a997,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1280,6 +1287,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4651654931375850507, guid: 063071ba684a54a45b2b02412924a997,
+        type: 3}
+      propertyPath: m_Name
+      value: Lamp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 063071ba684a54a45b2b02412924a997, type: 3}

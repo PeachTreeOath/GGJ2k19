@@ -24,18 +24,34 @@ public class FloatBehavior : MonoBehaviour
 
     private float currentSinkDelayTime;
 
+    [SerializeField]
+    private bool floatXMove;
+
+    [SerializeField]
+    private float xMoveAmount;
+
     // Start is called before the first frame update
     void Start()
     {
         collider = GetComponentInChildren<BoxCollider2D>();
         currentSinkDelayTime = sinkDelayTime;
+        lastXMoveDelta = xMoveAmount * 0.01f;
     }
+
+    private float lastXMoveDelta;
 
     // Update is called once per frame
     void Update()
     {
+
         if (touchingLava)
         {
+            if (floatXMove)
+            {
+                // lastXMoveDelta = Random.Range(-1, 1) * xMoveAmount - lastXMoveDelta;
+                transform.position += new Vector3(Random.Range(-1, 1) * xMoveAmount, 0, 0);
+            }
+
             if (floatingTime > 0)
             {
                 floatingTime -= Time.deltaTime;
