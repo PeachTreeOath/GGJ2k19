@@ -155,19 +155,20 @@
       }
     }
 
-    function jumpButtonImagePressed() {
-      // document.getElementById("jump-button").style.backgroundColor = "red";
+    // function jumpButtonImagePressed() {
+    //   // document.getElementById("jump-button").style.backgroundColor = "red";
 
-      var jumpButtonPressed = document.getElementById("jump-button");
-      jumpButtonPressed.id = "jump-button-image-pressed";
-      console.log("button pressed");
-    }
+    //   var jumpButtonPressed = document.getElementById("jump-button");
+    //   jumpButtonPressed.id = "jump-button-image-pressed";
+    //   console.log("button pressed");
+    // }
 
     App.prototype.sendMessageToScreen = function(msg) {
       this.airconsole.message(AirConsole.SCREEN, {"action": msg});
     };
 
   </script>
+
  
 </head>
 <body onload="window.app = new App()">
@@ -180,6 +181,16 @@
     <div class="button horizontal-buttons" id="interact-button" ontouchstart="window.app.sendMessageToScreen('interact')"></div>
     <div class="button horizontal-buttons" id="jump-button" onclick="jumpButtonImagePressed()" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div>
   </div>
-  
+
+  <script 
+    src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+    integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+    crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+    $( document ).ready(function() {
+      console.log( "ready!" );
+    });
+  </script>
 </body>
 </html>
