@@ -117,9 +117,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyboardControlsOn: 1
   groundedVDelta: 0.01
+<<<<<<< HEAD
+  playerSpeed: 2
+  jumpForce: 10
+  initJumpForce: 200
+=======
   playerSpeed: 3
   jumpForce: 20
   initJumpForce: 150
+>>>>>>> a876cdbb88ed7360a485dd955eeac10278f7ccfe
   maxJumpTime: 0.2
 --- !u!61 &685363375
 BoxCollider2D:
