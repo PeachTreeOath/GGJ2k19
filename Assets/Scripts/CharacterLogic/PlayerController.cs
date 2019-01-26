@@ -5,7 +5,7 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody rigidBody;
+    private Rigidbody2D rigidBody;
     private CapsuleCollider2D capsuleCollider;
 
     private bool leftButton;
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        rigidBody = GetComponent<Rigidbody>();
+        rigidBody = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
         movementDirection = Convert.ToInt32(rightButton) - Convert.ToInt32(leftButton);
 
-        rigidBody.MovePosition(rigidBody.position + new Vector3(playerSpeed * movementDirection, 0, 0));
+        rigidBody.MovePosition(rigidBody.position + new Vector2(playerSpeed * movementDirection, 0));
 
         if (jumpButton)
         {
