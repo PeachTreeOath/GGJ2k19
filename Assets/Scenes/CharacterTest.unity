@@ -167,28 +167,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
-        type: 3}
-      propertyPath: keyboardControlsOn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
-        type: 3}
-      propertyPath: playerSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
-        type: 3}
-      propertyPath: jumpForce
-      value: 350
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 729678982, guid: d88c1d1b0f4f4466781a6766e3723fd2, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d88c1d1b0f4f4466781a6766e3723fd2, type: 3}
 --- !u!1 &672613171
 GameObject:
@@ -272,38 +251,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &796903413 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1018172500222856, guid: d88c1d1b0f4f4466781a6766e3723fd2,
-    type: 3}
-  m_PrefabInstance: {fileID: 416521263}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &796903415
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796903413}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.15, y: 1.57}
-    newSize: {x: 0.33, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.15, y: 1.57}
-  m_EdgeRadius: 0
 --- !u!1001 &937192563
 PrefabInstance:
   m_ObjectHideFlags: 0
