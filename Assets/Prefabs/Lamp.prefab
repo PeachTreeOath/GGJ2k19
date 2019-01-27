@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5e0d83d0d6b43af920f4338cd8bab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
-  power: 5000
+  radius: 20
+  power: 1000
   upwardsMod: 0
   lifeTime: 5
   lampOff: {fileID: 5799869389977563697}
