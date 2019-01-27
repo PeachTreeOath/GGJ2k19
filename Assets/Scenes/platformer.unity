@@ -118,6 +118,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8191229835351434576}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &349859553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1969559628, guid: d9494975b9320b34ea904efc2c952e4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8191229835351434576}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &371947944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4192186641300287604, guid: d9494975b9320b34ea904efc2c952e4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8191229835351434576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &685363373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -195,9 +207,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d88c1d1b0f4f4466781a6766e3723fd2, type: 3}
---- !u!1 &1025159457 stripped
+--- !u!1 &1506256391 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8191229834405637538, guid: d9494975b9320b34ea904efc2c952e4f,
+  m_CorrespondingSourceObject: {fileID: 309554120, guid: d9494975b9320b34ea904efc2c952e4f,
     type: 3}
   m_PrefabInstance: {fileID: 8191229835351434576}
   m_PrefabAsset: {fileID: 0}
@@ -818,26 +830,14 @@ PrefabInstance:
     - target: {fileID: 597464879, guid: c953fc3c36ef5af449c1a9aee9b8e9a9, type: 3}
       propertyPath: currentPlayers
       value: 
-      objectReference: {fileID: 1025159457}
-    - target: {fileID: 8299736662138910040, guid: c953fc3c36ef5af449c1a9aee9b8e9a9,
-        type: 3}
-      propertyPath: platformObjects.Array.data[1]
+      objectReference: {fileID: 371947944}
+    - target: {fileID: 597464879, guid: c953fc3c36ef5af449c1a9aee9b8e9a9, type: 3}
+      propertyPath: victoryText
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8299736662138910040, guid: c953fc3c36ef5af449c1a9aee9b8e9a9,
-        type: 3}
-      propertyPath: platformObjects.Array.data[2]
+      objectReference: {fileID: 349859553}
+    - target: {fileID: 597464879, guid: c953fc3c36ef5af449c1a9aee9b8e9a9, type: 3}
+      propertyPath: victorName
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8299736662138910040, guid: c953fc3c36ef5af449c1a9aee9b8e9a9,
-        type: 3}
-      propertyPath: platformObjects.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8299736662138910040, guid: c953fc3c36ef5af449c1a9aee9b8e9a9,
-        type: 3}
-      propertyPath: platformObjects.Array.data[4]
-      value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1506256391}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c953fc3c36ef5af449c1a9aee9b8e9a9, type: 3}
