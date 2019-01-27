@@ -231,6 +231,7 @@ public class PlayerController : MonoBehaviour
             playerHealth -= damageValue;
             if (playerHealth <= 0)
             {
+                AirConsole.instance.Message(deviceID, "sound:scream");
                 Debug.Log("Player dead");
                 PlayerDead();
             }
@@ -294,22 +295,22 @@ public class PlayerController : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("HiddenLayer");
             gameObject.SetActive(false);
 
-            //gameObject.transform.Rotate(Vector3.back, 90f);
-            //FloatBehavior fb = gameObject.AddComponent<FloatBehavior>();
-            //fb.floatingTime = 5;
-            //fb.sinkSpeed = 0.5f;
-            //fb.sinkDelayTime = 0.75f;
-            //fb.floatXMove = true;
-            //fb.xMoveAmount = .005f;
+        //gameObject.transform.Rotate(Vector3.back, 90f);
+        //FloatBehavior fb = gameObject.AddComponent<FloatBehavior>();
+        //fb.floatingTime = 5;
+        //fb.sinkSpeed = 0.5f;
+        //fb.sinkDelayTime = 0.75f;
+        //fb.floatXMove = true;
+        //fb.xMoveAmount = .005f;
 
-            //Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
-            //if (canvas != null)
-            //{
-            //    canvas.enabled = false;
-            //}
-
-            AirConsole.instance.Message(deviceID, "view:dead_view");
-            AirConsole.instance.Message(deviceID, "sound:scream");
+        //Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
+        //if (canvas != null)
+        //{
+        //    canvas.enabled = false;
+        //}
+        
+        AirConsole.instance.Message(deviceID, "view:dead_view");
+            
             //AudioManager.instance.PlaySound("lava_burn");
        // }
     }
