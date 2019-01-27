@@ -27,6 +27,7 @@ public class FeetBehavior : MonoBehaviour
             if (Math.Abs(playerController.rigidBody.velocity.y) <= playerController.groundedVDelta)
             {
                 playerController.grounded = true;
+
             }
         }
     }
