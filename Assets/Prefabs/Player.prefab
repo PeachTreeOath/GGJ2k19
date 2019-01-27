@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 0}
+  playerAlive: 0
   playerHealth: 30
   heldObject: {fileID: 0}
   keyboardControlsOn: 0
@@ -128,6 +129,8 @@ MonoBehaviour:
   jumpForce: 20
   initJumpForce: 400
   maxJumpTime: 0.2
+  nickname: 
+  deviceID: -1
 --- !u!61 &685363375
 BoxCollider2D:
   m_ObjectHideFlags: 0
