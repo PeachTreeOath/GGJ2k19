@@ -169,6 +169,14 @@ public class GameManager : Singleton<GameManager>
     public void RegisterPlayer(PlayerController player)
     {
         players.Add(player);
+        if (!gameEnd && !gameStarted)
+        {
+            player.playerAlive = true;
+        }
+        else
+        {
+            player.PlayerDead();
+        }
     }
 
     public void RemovePlayer(PlayerController player)
