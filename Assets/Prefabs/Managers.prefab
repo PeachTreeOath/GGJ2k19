@@ -48,6 +48,7 @@ MonoBehaviour:
   currentPlayers: {fileID: 0}
   victoryText: {fileID: 0}
   victorName: {fileID: 0}
+  players: []
 --- !u!114 &8299736662138910040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +62,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

@@ -94,11 +94,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7460876419433399469, guid: d88c1d1b0f4f4466781a6766e3723fd2,
         type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7460876419433399469, guid: d88c1d1b0f4f4466781a6766e3723fd2,
-        type: 3}
       propertyPath: m_Color.b
       value: 0.4168926
       objectReference: {fileID: 0}
@@ -107,21 +102,21 @@ PrefabInstance:
       propertyPath: keyboardControlsOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7797543833685362082, guid: d88c1d1b0f4f4466781a6766e3723fd2,
+    - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
         type: 3}
-      propertyPath: m_SortingLayerID
-      value: 705358745
+      propertyPath: groundedVDelta
+      value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 3983127143432070235, guid: d88c1d1b0f4f4466781a6766e3723fd2,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 3209203382541802298}
     - target: {fileID: 7472280073456537708, guid: d88c1d1b0f4f4466781a6766e3723fd2,
         type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7472280073456537708, guid: d88c1d1b0f4f4466781a6766e3723fd2,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_textInfo.textComponent
+      value: 
+      objectReference: {fileID: 7120160023541186288}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d88c1d1b0f4f4466781a6766e3723fd2, type: 3}
 --- !u!4 &392449900024922380 stripped
@@ -130,6 +125,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 395539352953859740}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3209203382541802298 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
+    type: 3}
+  m_PrefabInstance: {fileID: 395539352953859740}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea6514e316644d78b10a080d1b8a494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7120160023541186288 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7472280073456537708, guid: d88c1d1b0f4f4466781a6766e3723fd2,
+    type: 3}
+  m_PrefabInstance: {fileID: 395539352953859740}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &395539353350239408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -195,31 +214,26 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 0.35294116
       objectReference: {fileID: 0}
-    - target: {fileID: 7460876419433399469, guid: d88c1d1b0f4f4466781a6766e3723fd2,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
         type: 3}
       propertyPath: keyboardControlsOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7797543833685362082, guid: d88c1d1b0f4f4466781a6766e3723fd2,
+    - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
         type: 3}
-      propertyPath: m_SortingLayerID
-      value: 705358745
+      propertyPath: groundedVDelta
+      value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 3983127143432070235, guid: d88c1d1b0f4f4466781a6766e3723fd2,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 3209203382682288406}
     - target: {fileID: 7472280073456537708, guid: d88c1d1b0f4f4466781a6766e3723fd2,
         type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7472280073456537708, guid: d88c1d1b0f4f4466781a6766e3723fd2,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_textInfo.textComponent
+      value: 
+      objectReference: {fileID: 7120160023417431260}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d88c1d1b0f4f4466781a6766e3723fd2, type: 3}
 --- !u!4 &392449899901213472 stripped
@@ -228,3 +242,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 395539353350239408}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3209203382682288406 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
+    type: 3}
+  m_PrefabInstance: {fileID: 395539353350239408}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea6514e316644d78b10a080d1b8a494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7120160023417431260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7472280073456537708, guid: d88c1d1b0f4f4466781a6766e3723fd2,
+    type: 3}
+  m_PrefabInstance: {fileID: 395539353350239408}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
