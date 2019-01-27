@@ -784,6 +784,26 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 55746312099306873, guid: d9494975b9320b34ea904efc2c952e4f,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 55746312099306873, guid: d9494975b9320b34ea904efc2c952e4f,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.957873
+      objectReference: {fileID: 0}
+    - target: {fileID: 55746312099306873, guid: d9494975b9320b34ea904efc2c952e4f,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 55746312099306873, guid: d9494975b9320b34ea904efc2c952e4f,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4290770175
+      objectReference: {fileID: 0}
     - target: {fileID: 1819198226773849302, guid: d9494975b9320b34ea904efc2c952e4f,
         type: 3}
       propertyPath: m_Material
