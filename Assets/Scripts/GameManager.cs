@@ -25,9 +25,12 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private GameObject victorName;
 
+    [SerializeField]
+    private GameObject everyoneDiedText;
+
     bool gameStarted;
 
-    bool gameVictorySccreen;
+    bool gameEnd;
 
     [SerializeField]
     private List<PlayerController> players;
@@ -46,7 +49,7 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        if (!gameVictorySccreen)
+        if (!gameEnd)
         {
             // Start up game
             List<PlayerController> alivePlayers = players.Where(p => p.playerAlive).ToList();
@@ -62,28 +65,33 @@ public class GameManager : Singleton<GameManager>
                     StartUpGame(alivePlayers);
                 }
             }
-            else if (alivePlayers.Count == 1)
+            else if (alivePlayers.Count <= 1)
             {
                 lava.StopLava();
+                gameEnd = true;
 
-                // Victory screen if only one player left
-                Debug.Log("Winner winner chicken dinner!");
-                gameVictorySccreen = true;
-                victoryText.SetActive(true);
-
-                TextMeshProUGUI victorNameText = victorName.GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI playerNameText = alivePlayers[0].GetComponentInChildren<TextMeshProUGUI>();
-
-                Color playerColor = alivePlayers[0].GetComponent<SpriteRenderer>().color;
-                if (playerNameText != null)
+                if (alivePlayers.Count == 1)
                 {
-                    victorName.SetActive(true);
-                    victorNameText.text = playerNameText.text;
+                    // Victory screen if only one player left
+                    victoryText.SetActive(true);
+                    TextMeshProUGUI victorNameText = victorName.GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI playerNameText = alivePlayers[0].GetComponentInChildren<TextMeshProUGUI>();
 
-                    if (playerColor != null)
+                    Color playerColor = alivePlayers[0].GetComponent<SpriteRenderer>().color;
+                    if (playerNameText != null)
                     {
-                        victorNameText.color = playerColor;
+                        victorName.SetActive(true);
+                        victorNameText.text = playerNameText.text;
+
+                        if (playerColor != null)
+                        {
+                            victorNameText.color = playerColor;
+                        }
                     }
+                }
+                else
+                {
+                    everyoneDiedText.SetActive(true);
                 }
             }
         }
@@ -123,9 +131,10 @@ public class GameManager : Singleton<GameManager>
     private void RestartGame()
     {
         // Reset UI
-        gameVictorySccreen = false;
+        gameEnd = false;
         victoryText.SetActive(false);
         victorName.SetActive(false);
+        everyoneDiedText.SetActive(false);
 
         Image titleImage = title.GetComponent<Image>();
         titleImage.enabled = true;
