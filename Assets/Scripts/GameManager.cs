@@ -170,6 +170,10 @@ public class GameManager : Singleton<GameManager>
             {
                 player.PlayerAlive();
             }
+            else
+            {
+                AirConsole.instance.Message(player.deviceID, "view:alive_view");
+            }
             Vector2 spawnPosition = SpawnZone.instance.GetSpawnLocation();
             player.transform.position = new Vector3(spawnPosition.x, spawnPosition.y, 0);
         }
