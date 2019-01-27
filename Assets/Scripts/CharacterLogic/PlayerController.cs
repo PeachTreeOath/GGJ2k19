@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rigidBody;
     private Collider2D col;
+    private Animator anim;
 
     [SerializeField]
     public double playerHealth = 30;
@@ -57,6 +58,7 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         defaultColor = gameObject.GetComponent<SpriteRenderer>().color;
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -69,19 +71,24 @@ public class PlayerController : MonoBehaviour
         switch (input)
         {
             case "right":
+                anim.SetBool("isRunning", true);
                 rightButton = true;
                 break;
             case "left":
+                anim.SetBool("isRunning", true);
                 leftButton = true;
                 break;
             case "right-up":
                 rightButton = false;
+                anim.SetBool("isRunning", false);
                 break;
             case "left-up":
                 leftButton = false;
+                anim.SetBool("isRunning", false);
                 break;
             case "jump":
                 jumpButton = true;
+                anim.SetBool("isJumping", true);
                 break;
             case "jump-up":
                 jumpButton = false;
@@ -141,6 +148,7 @@ public class PlayerController : MonoBehaviour
         {
             if (grounded)
             {
+                anim.SetBool("isJumping", true);
                 grounded = false;
                 isJumping = true;
                 rigidBody.AddForce(transform.up * initJumpForce);
