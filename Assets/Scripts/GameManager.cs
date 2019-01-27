@@ -88,6 +88,8 @@ public class GameManager : Singleton<GameManager>
                             victorNameText.color = playerColor;
                         }
                     }
+
+                    AirConsole.instance.Message(alivePlayers[0].deviceID, "view:victory_view");
                 }
                 else
                 {
