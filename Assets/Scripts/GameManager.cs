@@ -7,12 +7,18 @@ using NDream.AirConsole;
 
 public class GameManager : Singleton<GameManager>
 {
+    private const string CURRENT_PLAYERS_STRING = "Current Players: ";
+
     bool gameStarted;
 
     private LavaBehavior lava;
 
     [SerializeField]
     private GameObject title;
+
+
+    [SerializeField]
+    private GameObject currentPlayers;
 
     // Start is called before the first frame update
     void Start()
@@ -23,11 +29,12 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
+        // Start up game
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         if (!gameStarted && Input.GetKeyDown(KeyCode.Return))
         {
             gameStarted = true;
 
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
             foreach (GameObject player in players)
             {
                 Destroy(player.GetComponentInChildren<Canvas>());
@@ -41,5 +48,9 @@ public class GameManager : Singleton<GameManager>
 
             PlatformToggle.instance.ActivatePlatformObjects();
         }
+
+        // Current player count
+        Text currentPlayerText = currentPlayers.GetComponent<Text>();
+        currentPlayerText.text = CURRENT_PLAYERS_STRING + players.Length;
     }
 }
