@@ -6,10 +6,10 @@ public class FloatBehavior : MonoBehaviour
 {
     // Time that object is floating without any sinking on top of the lava.
     [SerializeField]
-    private float floatingTime;
+    public float floatingTime;
 
     [SerializeField]
-    private float sinkSpeed;
+    public float sinkSpeed;
 
     private BoxCollider2D collider;
 
@@ -20,15 +20,15 @@ public class FloatBehavior : MonoBehaviour
 
     // Very basic logic to create somewhat of a bobbing effect... should replace with actual bob logic.
     [SerializeField]
-    private float sinkDelayTime;
+    public float sinkDelayTime;
 
     private float currentSinkDelayTime;
 
     [SerializeField]
-    private bool floatXMove;
+    public bool floatXMove;
 
     [SerializeField]
-    private float xMoveAmount;
+    public float xMoveAmount;
 
     // Start is called before the first frame update
     void Start()

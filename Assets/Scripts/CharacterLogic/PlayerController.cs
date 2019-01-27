@@ -266,15 +266,23 @@ public class PlayerController : MonoBehaviour
     {
         this.playerAlive = false;
 
-        // Hide Player
-        gameObject.layer = LayerMask.NameToLayer("HiddenLayer");
-        gameObject.SetActive(false);
+        gameObject.transform.Rotate(Vector3.back, 90f);
+        FloatBehavior fb = gameObject.AddComponent<FloatBehavior>();
+        fb.floatingTime = 5;
+        fb.sinkSpeed = 0.5f;
+        fb.sinkDelayTime = 0.75f;
+        fb.floatXMove = true;
+        fb.xMoveAmount = .005f;
+
+        Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
+        if (canvas != null)
+        {
+            Destroy(canvas);
+        }
         
         AirConsole.instance.Message(deviceID, "view:dead_view");
 
         AudioManager.instance.PlaySound("lava_burn");
-
-
     }
 
     public void PlayerAlive()
