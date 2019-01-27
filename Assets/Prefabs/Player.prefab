@@ -120,7 +120,7 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   playerHealth: 30
   heldObject: {fileID: 0}
-  keyboardControlsOn: 1
+  keyboardControlsOn: 0
   facingRight: 1
   groundedVDelta: 0.01
   playerSpeed: 3.5
