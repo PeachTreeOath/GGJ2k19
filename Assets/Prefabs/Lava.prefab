@@ -49,6 +49,7 @@ MonoBehaviour:
   speed: 0.1
   lavaTop: {fileID: 7446626797457943460}
   lavaBottom: {fileID: 5064616408914850968}
+  offset: 0.965
 --- !u!61 &68233747
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -73,7 +74,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 43.47, y: 1.4}
+  m_Size: {x: 48.96, y: 1.4}
   m_EdgeRadius: 0
 --- !u!1 &3006134883354749752
 GameObject:
@@ -148,8 +149,8 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 39.87, y: 1}
-  m_AdaptiveModeThreshold: 0.5
+  m_Size: {x: 120.5, y: 1}
+  m_AdaptiveModeThreshold: 1
   m_SpriteTileMode: 1
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
@@ -179,7 +180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4840450528547868399}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.109, y: 0.284, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7624204760521718229}
@@ -227,9 +228,9 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 40, y: 1.54}
+  m_Size: {x: 113, y: 0.44}
   m_AdaptiveModeThreshold: 0
-  m_SpriteTileMode: 1
+  m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

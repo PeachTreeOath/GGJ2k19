@@ -24,7 +24,9 @@
   }
 
   #dead_view {
-    background-image: linear-gradient(0deg, #FE811C 0%, #5C0900 100%);
+    /*background-image: linear-gradient(0deg, #FE811C 0%, #5C0900 100%);*/
+    background: linear-gradient(to right, #f83600, #fe8c00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -103,7 +105,9 @@
 
     function App() {
       var me = this;
-	  jump_sound.volume=.1;
+	  jump_sound.volume=.3;
+	  lava_burn_sound.volume=.8;
+
       me.airconsole = new AirConsole({"orientation": "landscape", "synchronize_time" : "true"});
 
 	  showView("alive_view");
@@ -120,10 +124,13 @@
 		  	  showView("alive_view");
 		  }
 		  else if (data == "sound:lava_burn"){
-		  	  playSound("lava_burn")
+		  	  playSound("lava_burn");
 		  }
 		  else if (data == "sound:jump"){
-		  	  playSound("jump")
+		  	  playSound("jump");
+		  }
+		  else if (data == "sound:scream"){
+		  	  playSound("scream");
 		  }
 		}
       };
