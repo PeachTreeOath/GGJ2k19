@@ -42,6 +42,7 @@ public float spawnHeight = 2f;
 		GameObject newPlayer = Instantiate (playerPrefab, SpawnZone.instance.GetSpawnLocation(), transform.rotation) as GameObject;
 		newPlayer.GetComponentInChildren<TextMeshProUGUI>().text = AirConsole.instance.GetNickname(deviceID);
 		players.Add(deviceID, newPlayer.GetComponent<PlayerController>());
+      newPlayer.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
 	}
 
 	void OnMessage (int from, JToken data){
