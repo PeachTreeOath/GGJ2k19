@@ -236,6 +236,7 @@ public class PlayerController : MonoBehaviour
             playerHealth -= damageValue;
             if (playerHealth <= 0)
             {
+                AirConsole.instance.Message(deviceID, "sound:scream");
                 Debug.Log("Player dead");
                 PlayerDead();
             }
@@ -309,7 +310,6 @@ public class PlayerController : MonoBehaviour
             canvas.enabled = false;
 
             AirConsole.instance.Message(deviceID, "view:dead_view");
-            AirConsole.instance.Message(deviceID, "sound:scream");
             //AudioManager.instance.PlaySound("lava_burn");
        }
     }

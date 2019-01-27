@@ -103,7 +103,9 @@
 
     function App() {
       var me = this;
-	  jump_sound.volume=.1;
+	  jump_sound.volume=.3;
+	  lava_burn_sound.volume=.8;
+
       me.airconsole = new AirConsole({"orientation": "landscape", "synchronize_time" : "true"});
 
 	  showView("alive_view");
@@ -120,10 +122,13 @@
 		  	  showView("alive_view");
 		  }
 		  else if (data == "sound:lava_burn"){
-		  	  playSound("lava_burn")
+		  	  playSound("lava_burn");
 		  }
 		  else if (data == "sound:jump"){
-		  	  playSound("jump")
+		  	  playSound("jump");
+		  }
+		  else if (data == "sound:scream"){
+		  	  playSound("scream");
 		  }
 		}
       };
