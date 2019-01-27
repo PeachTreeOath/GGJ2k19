@@ -264,25 +264,28 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerDead()
     {
-        this.playerAlive = false;
-
-        gameObject.transform.Rotate(Vector3.back, 90f);
-        FloatBehavior fb = gameObject.AddComponent<FloatBehavior>();
-        fb.floatingTime = 5;
-        fb.sinkSpeed = 0.5f;
-        fb.sinkDelayTime = 0.75f;
-        fb.floatXMove = true;
-        fb.xMoveAmount = .005f;
-
-        Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
-        if (canvas != null)
+        if (playerAlive)
         {
-            canvas.enabled = false;
-        }
-        
-        AirConsole.instance.Message(deviceID, "view:dead_view");
+            this.playerAlive = false;
 
-        AudioManager.instance.PlaySound("lava_burn");
+            gameObject.transform.Rotate(Vector3.back, 90f);
+            FloatBehavior fb = gameObject.AddComponent<FloatBehavior>();
+            fb.floatingTime = 5;
+            fb.sinkSpeed = 0.5f;
+            fb.sinkDelayTime = 0.75f;
+            fb.floatXMove = true;
+            fb.xMoveAmount = .005f;
+
+            Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
+            if (canvas != null)
+            {
+                canvas.enabled = false;
+            }
+
+            AirConsole.instance.Message(deviceID, "view:dead_view");
+
+            AudioManager.instance.PlaySound("lava_burn");
+        }
     }
 
     public void PlayerAlive()
