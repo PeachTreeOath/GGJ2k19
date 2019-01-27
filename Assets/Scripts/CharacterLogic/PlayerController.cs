@@ -243,6 +243,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 AirConsole.instance.Message(deviceID, "sound:lava_burn");
+
             }
         }
     }
@@ -259,6 +260,8 @@ public class PlayerController : MonoBehaviour
             {
                 heldObject.Use(this);
                 heldObject = null;
+
+                AirConsole.instance.Message(deviceID, "sound:throw");
             }
             else
             {
@@ -289,6 +292,16 @@ public class PlayerController : MonoBehaviour
                 interacted = false;
                 interactTimer = 0;
             }
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        ATossableObject tossableObject = collision.gameObject.GetComponent<ATossableObject>();
+        if (tossableObject != null)
+        {
+            //We must have been hit by a tossable object, play sound on phone
+            AirConsole.instance.Message(deviceID, "sound:hit");
         }
     }
 

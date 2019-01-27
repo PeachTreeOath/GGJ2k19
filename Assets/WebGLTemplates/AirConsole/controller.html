@@ -98,13 +98,15 @@
 
     var airconsole;
 	var lava_burn_sound = new Audio('lava_burn3.wav');
-	var jump_sound = new Audio('jump.wav');
+	var jump_sound = new Audio('jump.mp3');
 	var scream_sound = new Audio('scream3.wav');
+	var hit_sound = new Audio('hit.wav');
+	var throw_sound = new Audio('throw.wav');
 
     function App() {
       var me = this;
 	  jump_sound.volume=.3;
-	  lava_burn_sound.volume=.8;
+	  lava_burn_sound.volume=.7;
 
       me.airconsole = new AirConsole({"orientation": "landscape", "synchronize_time" : "true"});
 
@@ -129,6 +131,12 @@
 		  }
 		  else if (data == "sound:scream"){
 		  	  playSound("scream");
+		  }
+		  else if (data == "sound:hit"){
+		  	  playSound("hit");
+		  }
+		  else if (data == "sound:throw"){
+		  	  playSound("throw");
 		  }
 		}
       };
@@ -197,6 +205,10 @@
 	  	  jump_sound.play();
 	  } else if (id == "scream"){
 	  	  scream_sound.play();
+	  }else if (id == "hit"){
+	  	  hit_sound.play();
+	  }else if (id == "throw"){
+	  	  throw_sound.play();
 	  }
 	};
   </script>
