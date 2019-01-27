@@ -4,24 +4,28 @@ using UnityEngine;
 
 public abstract class AInteractableObject : MonoBehaviour
 {
+    protected bool canInteract = true;
     protected bool playerNear;
 
     protected Color defaultColor;
 
     public virtual void Awake()
     {
-        defaultColor = gameObject.GetComponent<SpriteRenderer>().color;
+        if (gameObject.GetComponent<SpriteRenderer>())
+            defaultColor = gameObject.GetComponent<SpriteRenderer>().color;
     }
 
     public virtual void Update()
     {
-        if (playerNear)
+        if (canInteract && playerNear)
         {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+            if(gameObject.GetComponent<SpriteRenderer>())
+                gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
         }
         else
         {
-            gameObject.GetComponent<SpriteRenderer>().color = defaultColor;
+            if (gameObject.GetComponent<SpriteRenderer>())
+                gameObject.GetComponent<SpriteRenderer>().color = defaultColor;
         }
         
         Collider2D[] colliders = new Collider2D[30];
