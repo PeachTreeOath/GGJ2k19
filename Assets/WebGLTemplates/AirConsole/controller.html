@@ -5,37 +5,46 @@
   <script type="text/javascript" src="https://www.airconsole.com/api/airconsole-1.7.0.js"></script>
   <style type=text/css>
   /* the style sheet dictates what our elements (buttons, backgrounds etc.) will look like. */
-
+  
   body {
+
     display: flex;
     margin: 0;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
   }
+  
 
-  #background {
-    width: 100vh;
-    height: 100vw;
+  .view {
+    display: flex;
+    margin: 0;
+    height: 100%;
+    width: 100%;
     position: absolute;
-    z-index: -1;
+	float: right;
+    display:none;
   }
 
   .button{
+  
     background: #3B3B3B;
-    border: solid #1f1f1f 2px;
+    /*border: solid #1f1f1f 2px; */
     transition: 0.1ms ease-in-out all;
+	
   }
 
   .vertical-buttons {
-    width: 25vw;
-    height: 100vh;
+    width: 25%;
+    height: 100%;
+	float: left;
   }
 
   .horizontal-buttons-container {
-    width: 50vw;
+    width: 50%;
+	float: left;
   }
   .horizontal-buttons {
-    height: 50vh;
+    height: 50%;
   }
 
   #left-button{
@@ -78,17 +87,6 @@
     background-image: url("/interact_button_pressed.png");
   }
 
-  .button-text{
-    position: absolute;
-    color: white;”
-    font-family: sans-serif;
-    text-align: center;
-    pointer-events: none;
-    width: 50%;
-    height: 20%;
-    left: 25%;
-    top: 40%;
-  }
   </style>
   
   <script type="text/javascript">
@@ -145,15 +143,19 @@
  
 </head>
 <body onload="window.app = new App()">
-  <div id="background"></div>
-  <div class="button vertical-buttons" id="left-button" ontouchstart="window.app.sendMessageToScreen('left')" ontouchend="window.app.sendMessageToScreen('left-up')"></div>
-  <div class="button vertical-buttons" id="right-button" ontouchstart="window.app.sendMessageToScreen('right')" ontouchend="window.app.sendMessageToScreen('right-up')">
-  </div>
+  <div id="alive_view" class="view">
 
-  <div class="horizontal-buttons-container">
-    <div class="button horizontal-buttons" id="interact-button" ontouchstart="window.app.sendMessageToScreen('interact')"></div>
-    <!-- <div class="button horizontal-buttons" id="jump-button" onclick="jumpButtonImagePressed()" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div> -->
-    <div class="button horizontal-buttons" id="jump-button" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div>
+		<div class="button vertical-buttons" id="left-button" ontouchstart="window.app.sendMessageToScreen('left')" ontouchend="window.app.sendMessageToScreen('left-up')"></div>
+		<div class="button vertical-buttons" id="right-button" ontouchstart="window.app.sendMessageToScreen('right')" ontouchend="window.app.sendMessageToScreen('right-up')"></div>
+		
+	  
+	  
+		<div class="horizontal-buttons-container">
+		<div class="button horizontal-buttons" id="interact-button" ontouchstart="window.app.sendMessageToScreen('interact')"></div>
+		<!-- <div class="button horizontal-buttons" id="jump-button" onclick="jumpButtonImagePressed()" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div> -->
+		<div class="button horizontal-buttons" id="jump-button" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div>
+		</div>
+
   </div>
 
 </body>
