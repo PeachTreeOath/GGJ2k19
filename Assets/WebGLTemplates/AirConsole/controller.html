@@ -16,12 +16,8 @@
   
 
   .view {
-    display: flex;
-    margin: 0;
-    height: 100%;
-    width: 100%;
+
     position: absolute;
-	float: right;
     display:none;
   }
 
@@ -156,6 +152,10 @@
 		<div class="button horizontal-buttons" id="jump-button" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div>
 		</div>
 
+  </div>
+
+  <div id="dead_view" class="view">
+      You're dead!
   </div>
 
 </body>
