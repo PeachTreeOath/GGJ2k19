@@ -39,9 +39,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3970634935404756652}
     m_Modifications:
-    - target: {fileID: 1018172500222856, guid: d88c1d1b0f4f4466781a6766e3723fd2, type: 3}
-      propertyPath: m_Name
-      value: PlayerCapsule
+    - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
+        type: 3}
+      propertyPath: keyboardControlsOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
+        type: 3}
+      propertyPath: groundedVDelta
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4362763096764304, guid: d88c1d1b0f4f4466781a6766e3723fd2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -87,6 +93,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1018172500222856, guid: d88c1d1b0f4f4466781a6766e3723fd2, type: 3}
+      propertyPath: m_Name
+      value: PlayerCapsule
+      objectReference: {fileID: 0}
     - target: {fileID: 7460876419433399469, guid: d88c1d1b0f4f4466781a6766e3723fd2,
         type: 3}
       propertyPath: m_Color.r
@@ -96,16 +106,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.4168926
-      objectReference: {fileID: 0}
-    - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
-        type: 3}
-      propertyPath: keyboardControlsOn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
-        type: 3}
-      propertyPath: groundedVDelta
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3983127143432070235, guid: d88c1d1b0f4f4466781a6766e3723fd2,
         type: 3}
@@ -156,9 +156,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3970634935404756652}
     m_Modifications:
-    - target: {fileID: 1018172500222856, guid: d88c1d1b0f4f4466781a6766e3723fd2, type: 3}
-      propertyPath: m_Name
-      value: PlayerCapsule (1)
+    - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
+        type: 3}
+      propertyPath: keyboardControlsOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
+        type: 3}
+      propertyPath: groundedVDelta
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4362763096764304, guid: d88c1d1b0f4f4466781a6766e3723fd2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -204,6 +210,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1018172500222856, guid: d88c1d1b0f4f4466781a6766e3723fd2, type: 3}
+      propertyPath: m_Name
+      value: PlayerCapsule (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 7460876419433399469, guid: d88c1d1b0f4f4466781a6766e3723fd2,
         type: 3}
       propertyPath: m_Color.r
@@ -213,16 +223,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.g
       value: 0.35294116
-      objectReference: {fileID: 0}
-    - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
-        type: 3}
-      propertyPath: keyboardControlsOn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
-        type: 3}
-      propertyPath: groundedVDelta
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3983127143432070235, guid: d88c1d1b0f4f4466781a6766e3723fd2,
         type: 3}
