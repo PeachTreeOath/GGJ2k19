@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using NDream.AirConsole;
+using System.Linq;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -28,11 +29,14 @@ public class GameManager : Singleton<GameManager>
 
     bool gameVictorySccreen;
 
+    [SerializeField]
+    private List<PlayerController> players;
+
     // Start is called before the first frame update
     void Start()
     {
         lava = FindObjectOfType<LavaBehavior>();
-        
+        players = new List<PlayerController>();
     }
 
     // Update is called once per frame
@@ -41,20 +45,20 @@ public class GameManager : Singleton<GameManager>
         if (!gameVictorySccreen)
         {
             // Start up game
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            List<PlayerController> alivePlayers = players.Where(p => p.playerAlive).ToList();
 
             // Current player count
             TextMeshProUGUI currentPlayerText = currentPlayers.GetComponent<TextMeshProUGUI>();
-            currentPlayerText.text = CURRENT_PLAYERS_STRING + players.Length;
+            currentPlayerText.text = CURRENT_PLAYERS_STRING + alivePlayers.Count;
 
             if (!gameStarted)
             {
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    StartUpGame(players);
+                    StartUpGame(alivePlayers);
                 }
             }
-            else if (players.Length == 1)
+            else if (alivePlayers.Count == 1)
             {
                 lava.StopLava();
 
@@ -64,9 +68,9 @@ public class GameManager : Singleton<GameManager>
                 victoryText.SetActive(true);
 
                 TextMeshProUGUI victorNameText = victorName.GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI playerNameText = players[0].GetComponentInChildren<TextMeshProUGUI>();
+                TextMeshProUGUI playerNameText = alivePlayers[0].GetComponentInChildren<TextMeshProUGUI>();
 
-                Color playerColor = players[0].GetComponent<SpriteRenderer>().color;
+                Color playerColor = alivePlayers[0].GetComponent<SpriteRenderer>().color;
                 if (playerNameText != null)
                 {
                     victorName.SetActive(true);
@@ -86,29 +90,8 @@ public class GameManager : Singleton<GameManager>
                 RestartGame();
             }
         }
-    }
 
-    private void StartUpGame(GameObject[] players)
-    {
-        gameStarted = true;
-
-        foreach (GameObject player in players)
-        {
-            Destroy(player.GetComponentInChildren<Canvas>());
-        }
-
-        Debug.Log("Starting Lava");
-        lava.lavaRising = true;
-
-        Image titleImage = title.GetComponent<Image>();
-        titleImage.enabled = false;
-
-        PlatformToggle.instance.ActivatePlatformObjects();
-
-        // Current player count
-        Text currentPlayerText = currentPlayers.GetComponent<Text>();
-        currentPlayerText.text = CURRENT_PLAYERS_STRING + players.Length;
-
+        // Cheats
         if (Input.GetKeyDown(KeyCode.R))
         {
             AirConsole.instance.Broadcast("view:alive_view");
@@ -118,6 +101,19 @@ public class GameManager : Singleton<GameManager>
         {
             AirConsole.instance.Broadcast("view:dead_view");
         }
+    }
+
+    private void StartUpGame(List<PlayerController> alivePlayers)
+    {
+        gameStarted = true;
+
+        Debug.Log("Starting Lava");
+        lava.lavaRising = true;
+
+        Image titleImage = title.GetComponent<Image>();
+        titleImage.enabled = false;
+
+        PlatformToggle.instance.ActivatePlatformObjects();
     }
 
     private void RestartGame()
@@ -132,5 +128,24 @@ public class GameManager : Singleton<GameManager>
 
         // Reset game
         gameStarted = false;
+        foreach (PlayerController player in players)
+        {
+            if (!player.playerAlive)
+            {
+                player.PlayerAlive();
+            }
+            Vector2 spawnPosition = SpawnZone.instance.GetSpawnLocation();
+            player.transform.position = new Vector3(spawnPosition.x, spawnPosition.y, 0);
+        }
+    }
+
+    public void RegisterPlayer(PlayerController player)
+    {
+        players.Add(player);
+    }
+
+    public void RemovePlayer(PlayerController player)
+    {
+        players.Remove(player);
     }
 }

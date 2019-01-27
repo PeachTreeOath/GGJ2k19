@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spr;
 
     [SerializeField]
+    public bool playerAlive;
+
+    [SerializeField]
     public double playerHealth = 30;
 
     private bool leftButton;
@@ -61,11 +64,21 @@ public class PlayerController : MonoBehaviour
         spr = GetComponent<SpriteRenderer>();
         defaultColor = spr.color;
         anim = GetComponent<Animator>();
+        playerAlive = true;
+        GameManager.instance.RegisterPlayer(this);
+    }
+
+    void Destroy()
+    {
+        GameManager.instance.RemovePlayer(this);
     }
 
     void Update()
     {
-        GetKeyboardInput();
+        if (playerAlive)
+        {
+            GetKeyboardInput();
+        }
     }
 
     public void ButtonInput(string input)
@@ -194,7 +207,7 @@ public class PlayerController : MonoBehaviour
             if (playerHealth <= 0)
             {
                 Debug.Log("Player dead");
-                Destroy(this.gameObject);
+                PlayerDead();
             }
         }
     }
@@ -242,5 +255,23 @@ public class PlayerController : MonoBehaviour
                 interactTimer = 0;
             }
         }
+    }
+
+    public void PlayerDead()
+    {
+        this.playerAlive = false;
+
+        // Hide Player
+        gameObject.layer = LayerMask.NameToLayer("HiddenLayer");
+        gameObject.SetActive(false);
+    }
+
+    public void PlayerAlive()
+    {
+        this.playerAlive = true;
+
+        // Hide Player
+        gameObject.layer = LayerMask.NameToLayer("Player");
+        gameObject.SetActive(true);
     }
 }
