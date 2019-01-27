@@ -88,6 +88,8 @@ public class GameManager : Singleton<GameManager>
                             victorNameText.color = playerColor;
                         }
                     }
+
+                    AirConsole.instance.Message(alivePlayers[0].deviceID, "view:victory_view");
                 }
                 else
                 {
@@ -149,6 +151,13 @@ public class GameManager : Singleton<GameManager>
         GameObject obj2 = GameObject.Find("Level2D(Clone)");
         if (obj2 != null)
             Destroy(obj2);
+
+        TestingTossableObject[] throws = FindObjectsOfType<TestingTossableObject>();
+        foreach (TestingTossableObject thr in throws)
+        {
+            Destroy(thr.gameObject);
+        }
+
         Instantiate(levelPrefab);
         foreach(Hideable hide in FindObjectsOfType<Hideable>())
         {
