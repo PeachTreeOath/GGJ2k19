@@ -65,10 +65,17 @@ public class GameManager : Singleton<GameManager>
 
                 TextMeshProUGUI victorNameText = victorName.GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI playerNameText = players[0].GetComponent<TextMeshProUGUI>();
+
+                Color playerColor = players[0].GetComponent<SpriteRenderer>().color;
                 if (playerNameText != null)
                 {
                     victorName.SetActive(true);
                     victorNameText.text = playerNameText.text;
+
+                    if (playerColor != null)
+                    {
+                        victorNameText.color = playerColor;
+                    }
                 }
             }
         }
