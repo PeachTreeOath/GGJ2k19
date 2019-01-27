@@ -24,10 +24,16 @@
   }
 
   #dead_view {
-    background-image: linear-gradient(0deg, #FE811C 0%, #5C0900 100%);
+    /*background-image: linear-gradient(0deg, #FE811C 0%, #5C0900 100%);*/
+    background: linear-gradient(to right, #f83600, #fe8c00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+  }
+
+  svg {
+    fill: #fff;
   }
 
   .button{

@@ -13,6 +13,8 @@ public class LavaBehavior : MonoBehaviour
     SpriteRenderer lavaTop;
     [SerializeField]
     SpriteRenderer lavaBottom;
+    [SerializeField]
+    float offset = .8f;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +37,7 @@ public class LavaBehavior : MonoBehaviour
    {
         collider2D.size = new Vector2(collider2D.size.x, collider2D.size.y + (speed * Time.deltaTime));
         lavaBottom.size = collider2D.size;
-        lavaTop.gameObject.transform.position = new Vector2(0, lavaBottom.bounds.extents.y - lavaTop.size.y - .43f);
+        lavaTop.gameObject.transform.position = new Vector2(0, lavaBottom.bounds.extents.y - lavaTop.size.y - offset);
    }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -64,6 +66,6 @@ public class LavaBehavior : MonoBehaviour
        lavaRising = false;
         collider2D.size = new Vector2(collider2D.size.x, 1);
         lavaBottom.size = collider2D.size;
-        lavaTop.gameObject.transform.position = new Vector2(0, lavaBottom.bounds.extents.y - lavaTop.size.y - .43f);
+        lavaTop.gameObject.transform.position = new Vector2(0, lavaBottom.bounds.extents.y - lavaTop.size.y - offset);
     }
 }
