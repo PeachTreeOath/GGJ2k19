@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 20
   power: 1000
-  upwardsMod: 0
+  upwardsMod: 1
   lifeTime: 5
   lampOff: {fileID: 5799869389977563697}
   lampOn: {fileID: 2182671408712959598}
