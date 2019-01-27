@@ -45,9 +45,10 @@ public float spawnHeight = 2f;
 		{
 			newPlayer.GetComponentInChildren<TextMeshProUGUI>().text = nickname;
 		}
-        newPlayer.nickname = nickname;
-        newPlayer.deviceID = deviceID;
-		players.Add(deviceID, newPlayer.GetComponent<PlayerController>());
+        PlayerController pc = newPlayer.GetComponent<PlayerController>();
+        pc.nickname = nickname;
+        pc.deviceID = deviceID;
+		players.Add(deviceID, pc);
       newPlayer.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
 	}
 
