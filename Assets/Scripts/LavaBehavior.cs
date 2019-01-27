@@ -9,11 +9,16 @@ public class LavaBehavior : MonoBehaviour
 
    private const double LAVA_DAMAGE = 10;
    public bool lavaRising {get; set;}
+   BoxCollider2D collider2D;
+    [SerializeField]
+    SpriteRenderer lavaTop;
+    [SerializeField]
+    SpriteRenderer lavaBottom;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        collider2D = gameObject.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -28,7 +33,10 @@ public class LavaBehavior : MonoBehaviour
    // basic lava expanding behavior
    private void Expand()
    {
-      transform.localScale += new Vector3(0, speed * Time.deltaTime, 0);
+        collider2D.size = new Vector2(collider2D.size.x, collider2D.size.y * speed * Time.deltaTime);
+        lavaBottom.size = collider2D.size;
+        lavaBottom.gameObject.transform.position = Vector2.zero;
+        lavaTop.gameObject.transform.position = new Vector2(0, lavaBottom.bounds.size.y - lavaTop.bounds.extents.y);
    }
 
     private void OnTriggerEnter2D(Collider2D other)
