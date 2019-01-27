@@ -244,7 +244,7 @@ public class PlayerController : MonoBehaviour
     {
         if (gameObject.activeInHierarchy)
         {
-            if (!particleSystem.isPlaying)
+            if(!particleSystem.isPlaying)
             {
                 particleSystem.Play();
             }
@@ -364,7 +364,7 @@ public class PlayerController : MonoBehaviour
 
         Canvas canvas = gameObject.GetComponentInChildren<Canvas>(true);
         canvas.enabled = true;
-
+        particleSystem.Stop();
         AirConsole.instance.Message(deviceID, "view:alive_view");
     }
 }
