@@ -13,8 +13,6 @@ public class FloatBehavior : MonoBehaviour
 
     private BoxCollider2D collider;
 
-    private Vector2 originalColliderSize;
-
     [SerializeField]
     private bool touchingLava;
 
@@ -34,6 +32,7 @@ public class FloatBehavior : MonoBehaviour
     void Start()
     {
         collider = GetComponentInChildren<BoxCollider2D>();
+
         currentSinkDelayTime = sinkDelayTime;
         lastXMoveDelta = xMoveAmount * 0.01f;
     }
@@ -66,7 +65,15 @@ public class FloatBehavior : MonoBehaviour
 
                     if (collider.size.y <= 0.001)
                     {
-                        Destroy(gameObject);
+                        if (gameObject.tag == "Player")
+                        {
+                            gameObject.layer = LayerMask.NameToLayer("HiddenLayer");
+                            gameObject.SetActive(false);
+                        }
+                        else
+                        {
+                            Destroy(gameObject);
+                        }
                     }
                 }
             }
