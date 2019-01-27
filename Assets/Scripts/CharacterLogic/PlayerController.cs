@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using NDream.AirConsole;
 
 public class PlayerController : MonoBehaviour
 {
@@ -267,9 +268,9 @@ public class PlayerController : MonoBehaviour
         // Hide Player
         gameObject.layer = LayerMask.NameToLayer("HiddenLayer");
         gameObject.SetActive(false);
-
-        //TODO inform phone to display death screen.
-
+        
+        AirConsole.instance.Message(deviceID, "view:dead_view");
+        
 
     }
 
