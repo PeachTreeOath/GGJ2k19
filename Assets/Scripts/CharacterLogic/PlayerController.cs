@@ -175,6 +175,7 @@ public class PlayerController : MonoBehaviour
                 isJumping = true;
                 rigidBody.AddForce(transform.up * initJumpForce);
                 jumpTimer = 0;
+                AudioManager.instance.PlaySound("jump");
             }
 
             if (isJumping && jumpTimer <= maxJumpTime)
@@ -270,7 +271,9 @@ public class PlayerController : MonoBehaviour
         gameObject.SetActive(false);
         
         AirConsole.instance.Message(deviceID, "view:dead_view");
-        
+
+        AudioManager.instance.PlaySound("lava_burn");
+
 
     }
 
