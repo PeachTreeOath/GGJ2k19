@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NDream.AirConsole;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,6 +32,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         lava = FindObjectOfType<LavaBehavior>();
+        
     }
 
     // Update is called once per frame
@@ -95,6 +97,20 @@ public class GameManager : Singleton<GameManager>
         titleImage.enabled = false;
 
         PlatformToggle.instance.ActivatePlatformObjects();
+
+        // Current player count
+        Text currentPlayerText = currentPlayers.GetComponent<Text>();
+        currentPlayerText.text = CURRENT_PLAYERS_STRING + players.Length;
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            AirConsole.instance.Broadcast("view:alive_view");
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            AirConsole.instance.Broadcast("view:dead_view");
+        }
     }
 
     private void RestartGame()

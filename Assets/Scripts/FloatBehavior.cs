@@ -48,7 +48,7 @@ public class FloatBehavior : MonoBehaviour
         {
             if (floatXMove)
             {
-                transform.position += new Vector3(Random.Range(-1, 1) * xMoveAmount, 0, 0);
+                transform.position += new Vector3(Random.Range(-1f, 1f) * xMoveAmount, 0, 0);
             }
 
             if (floatingTime > 0)

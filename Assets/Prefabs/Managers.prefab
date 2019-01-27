@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: {fileID: 0}
+  currentPlayers: {fileID: 0}
+  victoryText: {fileID: 0}
+  victorName: {fileID: 0}
 --- !u!114 &8299736662138910040
 MonoBehaviour:
   m_ObjectHideFlags: 0

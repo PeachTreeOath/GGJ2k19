@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rigidBody;
     private Collider2D col;
+    private Animator anim;
+    private SpriteRenderer spr;
 
     [SerializeField]
     public double playerHealth = 30;
@@ -20,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool collidingWithWallLeft;
     private bool collidingWithWallRight;
     private float jumpTimer;
-    public bool grounded {get; set;}
+    public bool grounded { get; set; }
     public AHoldableObject heldObject;
     private Color defaultColor;
 
@@ -56,7 +58,9 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
-        defaultColor = gameObject.GetComponent<SpriteRenderer>().color;
+        spr = GetComponent<SpriteRenderer>();
+        defaultColor = spr.color;
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -69,19 +73,26 @@ public class PlayerController : MonoBehaviour
         switch (input)
         {
             case "right":
+                anim.SetBool("isRunning", true);
                 rightButton = true;
+                spr.flipX = false;
                 break;
             case "left":
+                anim.SetBool("isRunning", true);
                 leftButton = true;
+                spr.flipX = true;
                 break;
             case "right-up":
                 rightButton = false;
+                anim.SetBool("isRunning", false);
                 break;
             case "left-up":
                 leftButton = false;
+                anim.SetBool("isRunning", false);
                 break;
             case "jump":
                 jumpButton = true;
+                anim.SetBool("isJumping", true);
                 break;
             case "jump-up":
                 jumpButton = false;
@@ -118,6 +129,7 @@ public class PlayerController : MonoBehaviour
             {
                 rightButton = false;
                 leftButton = false;
+                anim.SetBool("isRunning", false);
             }
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -132,7 +144,7 @@ public class PlayerController : MonoBehaviour
 
         if (movementDirection == 1)
             facingRight = true;
-        else if(movementDirection == -1)
+        else if (movementDirection == -1)
             facingRight = false;
 
         transform.Translate(new Vector2(playerSpeed * movementDirection * Time.fixedDeltaTime, 0));
@@ -141,6 +153,7 @@ public class PlayerController : MonoBehaviour
         {
             if (grounded)
             {
+                anim.SetBool("isJumping", true);
                 grounded = false;
                 isJumping = true;
                 rigidBody.AddForce(transform.up * initJumpForce);
@@ -164,6 +177,10 @@ public class PlayerController : MonoBehaviour
             jumpTimer = 0;
             isJumping = false;
         }
+    }
+    public void SetGroundedAnimation()
+    {
+        anim.SetBool("isJumping", false);
     }
 
     public void takeDamage(double damageValue)
@@ -203,7 +220,7 @@ public class PlayerController : MonoBehaviour
                 BoxCollider2D box = gameObject.GetComponent<BoxCollider2D>();
                 Physics2D.OverlapBox(box.bounds.center, box.bounds.size, 0, filter, colliders);
 
-                foreach(Collider2D item in colliders)
+                foreach (Collider2D item in colliders)
                 {
                     if (item && item.gameObject.tag == "Interactable")
                     {
@@ -215,10 +232,10 @@ public class PlayerController : MonoBehaviour
             interactButton = false;
 
         }
-        if(interacted)
+        if (interacted)
         {
             interactTimer += Time.fixedDeltaTime;
-            if(interactTimer >= .1)
+            if (interactTimer >= .1)
             {
                 gameObject.GetComponent<SpriteRenderer>().color = defaultColor;
                 interacted = false;
