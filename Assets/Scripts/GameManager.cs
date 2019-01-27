@@ -86,6 +86,17 @@ public class GameManager : Singleton<GameManager>
                 RestartGame();
             }
         }
+
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            AirConsole.instance.Broadcast("view:alive_view");
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            AirConsole.instance.Broadcast("view:dead_view");
+        }
     }
 
     private void StartUpGame(GameObject[] players)
@@ -109,15 +120,6 @@ public class GameManager : Singleton<GameManager>
         Text currentPlayerText = currentPlayers.GetComponent<Text>();
         currentPlayerText.text = CURRENT_PLAYERS_STRING + players.Length;
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            AirConsole.instance.Broadcast("view:alive_view");
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            AirConsole.instance.Broadcast("view:dead_view");
-        }
     }
 
     private void RestartGame()
