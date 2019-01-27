@@ -423,7 +423,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501621793166966855}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1504,7 +1504,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8462876480842553977}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -5399,7 +5399,7 @@ PrefabInstance:
     - target: {fileID: 2652775167846095075, guid: 389c638b30db63c4dbaa62f49b2349ce,
         type: 3}
       propertyPath: m_Size.x
-      value: 3.8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2652775167846095075, guid: 389c638b30db63c4dbaa62f49b2349ce,
         type: 3}
@@ -5494,7 +5494,7 @@ PrefabInstance:
     - target: {fileID: 6123109137209350206, guid: 389c638b30db63c4dbaa62f49b2349ce,
         type: 3}
       propertyPath: m_Size.x
-      value: 3.8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6123109137209350206, guid: 389c638b30db63c4dbaa62f49b2349ce,
         type: 3}
