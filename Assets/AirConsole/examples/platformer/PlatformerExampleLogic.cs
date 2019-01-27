@@ -83,13 +83,16 @@ public float spawnHeight = 2f;
 		{
 			newPlayer.GetComponentInChildren<TextMeshProUGUI>().text = nickname;
 		}
-		players.Add(deviceID, newPlayer.GetComponent<PlayerController>());
+        PlayerController pc = newPlayer.GetComponent<PlayerController>();
+        pc.nickname = nickname;
+        pc.deviceID = deviceID;
+		players.Add(deviceID, pc);
       newPlayer.GetComponent<SpriteRenderer>().color = GetPlayerColor();
       // increases after player joins the level to be used for player colors
       playerSpawnNumber++;
-	}
+   }
 
-	void OnMessage (int from, JToken data){
+   void OnMessage (int from, JToken data){
 		Debug.Log ("message: " + data);
 
 		//When I get a message, I check if it's from any of the devices stored in my device Id dictionary

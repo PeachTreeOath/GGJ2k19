@@ -7,6 +7,8 @@ public class FeetBehavior : MonoBehaviour
 {
     [SerializeField]
     private PlayerController playerController;
+    private Vector3 offset = new Vector3(0, .8f, 0);
+    private Vector3 boxSize = new Vector3(.4f, .1f, 1);
 
     void Start()
     {
@@ -16,18 +18,33 @@ public class FeetBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag == "Wall")
         {
-                playerController.grounded = false;
+            playerController.grounded = false;
         }
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(0, 0, 1, .4f);
+                Gizmos.DrawCube(transform.position - offset, boxSize);
+      
+           
+    }
     void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Wall")
         {
             if (Math.Abs(playerController.rigidBody.velocity.y) <= playerController.groundedVDelta)
             {
-                playerController.grounded = true;
-                playerController.SetGroundedAnimation();
+                Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position - offset, boxSize, 0);
+                foreach (Collider2D col in cols)
+                {
+                    if (col.tag == "Wall")
+                    {
+                        playerController.grounded = true;
+                        playerController.SetGroundedAnimation();
+                        break;
+                    }
+                }
             }
         }
     }

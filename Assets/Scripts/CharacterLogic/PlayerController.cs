@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using NDream.AirConsole;
 
 public class PlayerController : MonoBehaviour
 {
@@ -51,6 +52,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float maxJumpTime = .2f;
+
+    public string nickname = "";
+    public int deviceID = -1;
 
     private bool isInSphere;
 
@@ -264,6 +268,10 @@ public class PlayerController : MonoBehaviour
         // Hide Player
         gameObject.layer = LayerMask.NameToLayer("HiddenLayer");
         gameObject.SetActive(false);
+        
+        AirConsole.instance.Message(deviceID, "view:dead_view");
+        
+
     }
 
     public void PlayerAlive()
@@ -273,5 +281,7 @@ public class PlayerController : MonoBehaviour
         // Hide Player
         gameObject.layer = LayerMask.NameToLayer("Player");
         gameObject.SetActive(true);
+
+        AirConsole.instance.Message(deviceID, "view:alive_view");
     }
 }
