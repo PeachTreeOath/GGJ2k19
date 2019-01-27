@@ -8,44 +8,40 @@
 
   body {
     display: flex;
-    margin: 0;
-    height: 100vh;
-    width: 100vw;
   }
 
   #background {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: absolute;
     z-index: -1;
   }
 
-  .view {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    display:none;
-  }
-
   .button{
     background: #3B3B3B;
+    font-size: 14px;
+    padding: 5px 10px 5px 10px;
     border: solid #1f1f1f 2px;
-    transition: 0.1ms ease-in-out all;
+    height: 100%;
+    /*position: absolute;*/
   }
 
   .vertical-buttons {
-    width: 25vw;
-    height: 100vh;
+    width: 25%;
+    height: 100%;
   }
 
   .horizontal-buttons-container {
-    width: 50vw;
+    width: 50%;
   }
   .horizontal-buttons {
-    height: 50vh;
+    height: 50%;
   }
 
   #left-button{
+/*    left: 0;
+    width: 25%;
+    height: 100%;*/
     background-image: url("/left_button.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -56,6 +52,9 @@
   }
 
   #right-button{
+/*    left: 25%;
+    width: 25%;
+    height: 100%;*/
     background-image: url("/right_button.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -66,6 +65,10 @@
   }
 
   #jump-button{
+    /*right: 0;
+    bottom: 0;*/
+    /*width: 50%;*/
+    /*height: 50%;*/
     background-image: url("/jump_button.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -74,6 +77,13 @@
   #jump-button:active {
     background-image: url("/jump_button_pressed.png");
   }
+
+/*  #jump-button-image{
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }*/
 
   #interact-button{
     background-image: url("/interact_button.png");
@@ -108,16 +118,6 @@
 
       me.airconsole.onMessage = function(from, data) {
         console.log("onMessage", from, data);
-
-		// Check if the data, we sent, contains view
-	    if (data) {
-		  if (data == "view:dead_view"){
-		    showView("dead_view");
-		  } 
-		  else if (data == "view:alive_view"){
-		  	  showView("alive_view");
-		  }
-		}
       };
 
       /*
@@ -143,9 +143,6 @@
           }
         }
       }
-
-	  showView("alive_view");
-	  
     }
 
     // function jumpButtonImagePressed() {
@@ -159,31 +156,6 @@
     App.prototype.sendMessageToScreen = function(msg) {
       this.airconsole.message(AirConsole.SCREEN, {"action": msg});
     };
-
-	//var showView = function(id) {
-	function showView(id){
-	  var view = document.getElementById(id);
-	  var all_views = document.getElementsByClassName('view');
-      // Hide all containers
-	  for (var i=0; i<all_views.length; i++) {
-	    console.log("all_views[" + i + "]: " + all_views[i].id)
-        all_views[i].style.display = 'none';
-	  }
-  
-	  // Show container
-	  if (view != null){
-	    view.style.display = 'block';
-	  }
-	};
-	// Show the view with the id 'loading_view':
-	//showView('alive_view');
-	// A button to switch to the ingame view
-	//var my_button = document.getElementById('go_to_game');
-	//  my_button.addEventListener('touchstart', function() {
-	//  showView('alive_view');
-	//});
-
-
 
   </script>
 
@@ -200,15 +172,6 @@
     <!-- <div class="button horizontal-buttons" id="jump-button" onclick="jumpButtonImagePressed()" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div> -->
     <div class="button horizontal-buttons" id="jump-button" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div>
   </div>
-
-  <div id="dead_view" class="view">You're dead!</div>
-  <div id="alive_view" class="view">
-	  <div class="button" id="left-button" ontouchstart="window.app.sendMessageToScreen('left')" ontouchend="window.app.sendMessageToScreen('left-up')"></div>
-	  <div class="button" id="right-button" ontouchstart="window.app.sendMessageToScreen('right')" ontouchend="window.app.sendMessageToScreen('right-up')"></div>
-	  <div class="button" id="jump-button" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div>
-	  <div class="button" id="interact-button" ontouchstart="window.app.sendMessageToScreen('interact')"></div>
-  </div>
-
   
 </body>
 </html>
