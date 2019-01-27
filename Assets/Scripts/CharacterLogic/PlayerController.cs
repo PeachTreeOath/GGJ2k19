@@ -281,5 +281,7 @@ public class PlayerController : MonoBehaviour
         // Hide Player
         gameObject.layer = LayerMask.NameToLayer("Player");
         gameObject.SetActive(true);
+
+        AirConsole.instance.Message(deviceID, "view:alive_view");
     }
 }
