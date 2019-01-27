@@ -52,6 +52,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float maxJumpTime = .2f;
 
+    public string nickname = "";
+    public int deviceID = -1;
+
     private bool isInSphere;
 
     public int MovementDirection { get; }
@@ -264,6 +267,10 @@ public class PlayerController : MonoBehaviour
         // Hide Player
         gameObject.layer = LayerMask.NameToLayer("HiddenLayer");
         gameObject.SetActive(false);
+
+        //TODO inform phone to display death screen.
+
+
     }
 
     public void PlayerAlive()
