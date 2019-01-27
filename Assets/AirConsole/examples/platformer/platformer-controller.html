@@ -20,14 +20,6 @@
     z-index: -1;
   }
 
-
-  .view {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    display:none;
-  }
-
   .button{
     background: #3B3B3B;
     border: solid #1f1f1f 2px;
@@ -109,16 +101,6 @@
 
       me.airconsole.onMessage = function(from, data) {
         console.log("onMessage", from, data);
-
-		// Check if the data, we sent, contains view
-	    if (data) {
-		  if (data == "view:dead_view"){
-		    showView("dead_view");
-		  } 
-		  else if (data == "view:alive_view"){
-		  	  showView("alive_view");
-		  }
-		}
       };
 
       /*
@@ -144,9 +126,6 @@
           }
         }
       }
-
-	  showView("alive_view");
-	  
     }
 
     // function jumpButtonImagePressed() {
@@ -161,49 +140,21 @@
       this.airconsole.message(AirConsole.SCREEN, {"action": msg});
     };
 
-	//var showView = function(id) {
-	function showView(id){
-	  var view = document.getElementById(id);
-	  var all_views = document.getElementsByClassName('view');
-      // Hide all containers
-	  for (var i=0; i<all_views.length; i++) {
-	    console.log("all_views[" + i + "]: " + all_views[i].id)
-        all_views[i].style.display = 'none';
-	  }
-  
-	  // Show container
-	  if (view != null){
-	    view.style.display = 'block';
-	  }
-	};
-	// Show the view with the id 'loading_view':
-	//showView('alive_view');
-	// A button to switch to the ingame view
-	//var my_button = document.getElementById('go_to_game');
-	//  my_button.addEventListener('touchstart', function() {
-	//  showView('alive_view');
-	//});
-
-
-
   </script>
 
  
 </head>
 <body onload="window.app = new App()">
-  <div id="alive_view" class="view">
-	  <!--div id="background"></div-->
-	  <div class="button vertical-buttons" id="left-button" ontouchstart="window.app.sendMessageToScreen('left')" ontouchend="window.app.sendMessageToScreen('left-up')"></div>
-	  <div class="button vertical-buttons" id="right-button" ontouchstart="window.app.sendMessageToScreen('right')" ontouchend="window.app.sendMessageToScreen('right-up')">
-	  </div>
-
-	  <div class="horizontal-buttons-container">
-		<div class="button horizontal-buttons" id="interact-button" ontouchstart="window.app.sendMessageToScreen('interact')"></div>
-		<!-- <div class="button horizontal-buttons" id="jump-button" onclick="jumpButtonImagePressed()" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div> -->
-		<div class="button horizontal-buttons" id="jump-button" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div>
-	  </div>
+  <div id="background"></div>
+  <div class="button vertical-buttons" id="left-button" ontouchstart="window.app.sendMessageToScreen('left')" ontouchend="window.app.sendMessageToScreen('left-up')"></div>
+  <div class="button vertical-buttons" id="right-button" ontouchstart="window.app.sendMessageToScreen('right')" ontouchend="window.app.sendMessageToScreen('right-up')">
   </div>
-  <div id="dead_view" class="view">You're dead!</div>
+
+  <div class="horizontal-buttons-container">
+    <div class="button horizontal-buttons" id="interact-button" ontouchstart="window.app.sendMessageToScreen('interact')"></div>
+    <!-- <div class="button horizontal-buttons" id="jump-button" onclick="jumpButtonImagePressed()" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div> -->
+    <div class="button horizontal-buttons" id="jump-button" ontouchstart="window.app.sendMessageToScreen('jump')" ontouchend="window.app.sendMessageToScreen('jump-up')"></div>
+  </div>
 
 </body>
 </html>
