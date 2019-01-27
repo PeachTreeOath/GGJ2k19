@@ -33,8 +33,8 @@ public class AudioManager : Singleton<AudioManager>
         soundMixer = new Dictionary<string, float>
         {
             { "lava_royale_2", .45f },
-            { "obstacle_warning", .4f },
-            { "car_start", .9f },
+            { "lava_burn", .7f },
+            { "jump", .5f },
             { "car_slide", .9f },
             { "car_bump", .7f },
             { "car_honk", .1f },
