@@ -57,23 +57,8 @@ public class PlatformerExampleLogic : MonoBehaviour
         AirConsole.instance.onMessage += OnMessage;
         AirConsole.instance.onReady += OnReady;
         AirConsole.instance.onConnect += OnConnect;
+        AirConsole.instance.onDeviceStateChange += OnDeviceStateChange;
     }
-
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        foreach (int device in AirConsole.instance.GetControllerDeviceIds())
-        {
-            if (!players[device].nickname.Equals(AirConsole.instance.GetNickname(device)))
-            {
-                players[device].nickname = AirConsole.instance.GetNickname(device);
-                players[device].GetComponentInChildren<TextMeshProUGUI>().text = players[device].nickname;
-            }
-        }
-    }
-
 
     void OnReady(string code)
     {
@@ -126,6 +111,14 @@ public class PlatformerExampleLogic : MonoBehaviour
             players[from].ButtonInput(data["action"].ToString());
         }
     }
+    void OnDeviceStateChange(int device, JToken data)
+    {
+        if (!players[device].nickname.Equals(AirConsole.instance.GetNickname(device)))
+        {
+            players[device].nickname = AirConsole.instance.GetNickname(device);
+            players[device].GetComponentInChildren<TextMeshProUGUI>().text = players[device].nickname;
+        }
+    }
 
     void OnDestroy()
     {
@@ -134,6 +127,7 @@ public class PlatformerExampleLogic : MonoBehaviour
             AirConsole.instance.onMessage -= OnMessage;
             AirConsole.instance.onReady -= OnReady;
             AirConsole.instance.onConnect -= OnConnect;
+            AirConsole.instance.onDeviceStateChange -= OnDeviceStateChange;
         }
     }
 
