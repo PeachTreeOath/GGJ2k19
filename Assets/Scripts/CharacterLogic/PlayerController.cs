@@ -112,11 +112,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //if (onFireTimer+5 > Time.time && particleSystem.isPlaying)
-        //{
-        //    particleSystem.Stop();
-        //}
-        
+        if (onFireTimer + 5 < Time.time && particleSystem.isPlaying)
+        {
+            particleSystem.Stop();
+        }
+
         if (playerAlive)
         {
             GetKeyboardInput();
@@ -244,7 +244,11 @@ public class PlayerController : MonoBehaviour
     {
         if (gameObject.activeInHierarchy)
         {
-            particleSystem.Play();
+            if (!particleSystem.isPlaying)
+            {
+                particleSystem.Play();
+            }
+            Debug.Log("starting particles");
             onFireTimer = Time.time;
             float currentTime = Time.time;
             if (currentTime >= damageTimer + 1)
@@ -321,6 +325,7 @@ public class PlayerController : MonoBehaviour
             if (playerSinking)
             {
                 gameObject.transform.Rotate(Vector3.back, 90f);
+                particleSystem.transform.Rotate(Vector3.back, -90f);
                 FloatBehavior fb = gameObject.AddComponent<FloatBehavior>();
                 fb.floatingTime = 5;
                 fb.sinkSpeed = 0.5f;
@@ -348,6 +353,7 @@ public class PlayerController : MonoBehaviour
 
         // Unhide Player
         gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        particleSystem.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         gameObject.layer = LayerMask.NameToLayer("Player");
         gameObject.SetActive(true);
 
