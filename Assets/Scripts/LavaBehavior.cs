@@ -5,7 +5,7 @@ using UnityEngine;
 public class LavaBehavior : MonoBehaviour
 {
    public float speed = 0.1f;
-    private float accel = 0.01f;
+    private float accel = 0.02f;
    private const double LAVA_DAMAGE = 10;
    public bool lavaRising {get; set;}
    BoxCollider2D collider2D;
