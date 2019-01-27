@@ -53,6 +53,7 @@ MonoBehaviour:
   currentPlayers: {fileID: 0}
   victoryText: {fileID: 0}
   victorName: {fileID: 0}
+  everyoneDiedText: {fileID: 0}
   players: []
 --- !u!114 &8299736662138910040
 MonoBehaviour:
@@ -67,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformObjects:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

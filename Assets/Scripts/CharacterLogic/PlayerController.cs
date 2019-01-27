@@ -199,7 +199,8 @@ public class PlayerController : MonoBehaviour
                 isJumping = true;
                 rigidBody.AddForce(transform.up * initJumpForce);
                 jumpTimer = 0;
-                AudioManager.instance.PlaySound("jump");
+                //AudioManager.instance.PlaySound("jump");
+                AirConsole.instance.Message(deviceID, "sound:jump");
             }
 
             if (isJumping && jumpTimer <= maxJumpTime)
@@ -237,6 +238,10 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Player dead");
                 PlayerDead();
+            }
+            else
+            {
+                AirConsole.instance.Message(deviceID, "sound:lava_burn");
             }
         }
     }
@@ -304,8 +309,8 @@ public class PlayerController : MonoBehaviour
             canvas.enabled = false;
 
             AirConsole.instance.Message(deviceID, "view:dead_view");
-
-            AudioManager.instance.PlaySound("lava_burn");
+            AirConsole.instance.Message(deviceID, "sound:scream");
+            //AudioManager.instance.PlaySound("lava_burn");
        }
     }
 
