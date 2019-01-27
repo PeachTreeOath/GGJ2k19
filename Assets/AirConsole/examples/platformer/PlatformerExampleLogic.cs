@@ -40,7 +40,11 @@ public float spawnHeight = 2f;
 
 		//Instantiate player prefab, store device id + player script in a dictionary
 		GameObject newPlayer = Instantiate (playerPrefab, SpawnZone.instance.GetSpawnLocation(), transform.rotation) as GameObject;
-		newPlayer.GetComponentInChildren<TextMeshProUGUI>().text = AirConsole.instance.GetNickname(deviceID);
+		string nickname = AirConsole.instance.GetNickname(deviceID);
+		if (nickname != null)
+		{
+			newPlayer.GetComponentInChildren<TextMeshProUGUI>().text = nickname;
+		}
 		players.Add(deviceID, newPlayer.GetComponent<PlayerController>());
       newPlayer.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
 	}
