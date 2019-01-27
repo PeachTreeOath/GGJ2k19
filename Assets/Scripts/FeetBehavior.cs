@@ -24,28 +24,49 @@ public class FeetBehavior : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = new Color(0, 0, 1, .4f);
-                Gizmos.DrawCube(transform.position - offset, boxSize);
+        //Gizmos.color = new Color(0, 0, 1, .4f);
+                //Gizmos.DrawCube(transform.position - offset, boxSize);
       
            
     }
-    void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player")
         {
             if (Math.Abs(playerController.rigidBody.velocity.y) <= playerController.groundedVDelta)
             {
-                Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position - offset, boxSize, 0);
-                foreach (Collider2D col in cols)
-                {
-                    if (col.tag == "Wall")
-                    {
-                        playerController.grounded = true;
-                        playerController.SetGroundedAnimation();
-                        break;
-                    }
-                }
+                //Collider2D[] cols = Physics2D.OverlapBox()
+                //Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position - offset, boxSize, 0);
+                //foreach (Collider2D col in cols)
+                //{
+                //if (col.tag == "Wall")
+                //{
+                playerController.grounded = true;
+                playerController.SetGroundedAnimation();
+                //break;
+                //}
+                //}
             }
         }
     }
+    //void OnCollisionStay2D(Collision2D collision)
+    //{
+        //if (collision.gameObject.tag == "Wall")
+        //{
+        //    //if (Math.Abs(playerController.rigidBody.velocity.y) <= playerController.groundedVDelta)
+        //    {
+        //        //Collider2D[] cols = Physics2D.OverlapBox()
+        //        //Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position - offset, boxSize, 0);
+        //        //foreach (Collider2D col in cols)
+        //        //{
+        //            //if (col.tag == "Wall")
+        //            //{
+        //                playerController.grounded = true;
+        //                playerController.SetGroundedAnimation();
+        //                //break;
+        //            //}
+        //        //}
+        //    }
+        //}
+    //}
 }
