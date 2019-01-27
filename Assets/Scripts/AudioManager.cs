@@ -32,7 +32,7 @@ public class AudioManager : Singleton<AudioManager>
         soundMap = new Dictionary<string, AudioClip>();
         soundMixer = new Dictionary<string, float>
         {
-            { "praise_song", .45f },
+            { "lava_royale_2", .45f },
             { "obstacle_warning", .4f },
             { "car_start", .9f },
             { "car_slide", .9f },
@@ -67,13 +67,13 @@ public class AudioManager : Singleton<AudioManager>
         }
 
         ToggleMute(mute);
-        PlayMusic("praise_song");
+        PlayMusic("lava_royale_2");
     }
 
 	public void UpdateOverallVolume()
 	{
         //musicVolume = VolumeListener.volumeLevel;
-        musicChannel.volume = VolumeListener.volumeLevel * soundMixer["praise_song"];
+        musicChannel.volume = VolumeListener.volumeLevel * soundMixer["lava_royale_2"];
         soundChannel.volume = VolumeListener.volumeLevel;
     }
 
