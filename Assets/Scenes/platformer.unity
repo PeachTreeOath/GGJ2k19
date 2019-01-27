@@ -193,6 +193,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3023144101720782246, guid: d88c1d1b0f4f4466781a6766e3723fd2,
+        type: 3}
+      propertyPath: keyboardControlsOn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7797543833685362082, guid: d88c1d1b0f4f4466781a6766e3723fd2,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -313,15 +318,15 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4577697055578885609, guid: 184299e245c514742802e9b5e44b4341,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8173117788471222917, guid: 184299e245c514742802e9b5e44b4341,
         type: 3}
       propertyPath: tossForce
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577697055578885609, guid: 184299e245c514742802e9b5e44b4341,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8173117788471222917, guid: 184299e245c514742802e9b5e44b4341, type: 3}
@@ -395,18 +400,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a3e3d82c28554f45a168dd19f6f0a39, type: 3}
---- !u!1 &1725692460268463675 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8458827261722260809, guid: 3a3e3d82c28554f45a168dd19f6f0a39,
-    type: 3}
-  m_PrefabInstance: {fileID: 1725692460268463671}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1725692460268463676 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1632299733929012582, guid: 3a3e3d82c28554f45a168dd19f6f0a39,
-    type: 3}
-  m_PrefabInstance: {fileID: 1725692460268463671}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1824872893073505868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -958,14 +951,9 @@ PrefabInstance:
       objectReference: {fileID: 1025159457}
     - target: {fileID: 8299736662138910040, guid: c953fc3c36ef5af449c1a9aee9b8e9a9,
         type: 3}
-      propertyPath: platformObjects.Array.data[0]
-      value: 
-      objectReference: {fileID: 1725692460268463676}
-    - target: {fileID: 8299736662138910040, guid: c953fc3c36ef5af449c1a9aee9b8e9a9,
-        type: 3}
       propertyPath: platformObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 1725692460268463675}
+      objectReference: {fileID: 0}
     - target: {fileID: 8299736662138910040, guid: c953fc3c36ef5af449c1a9aee9b8e9a9,
         type: 3}
       propertyPath: platformObjects.Array.data[2]

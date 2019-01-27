@@ -17,6 +17,12 @@ public class LampSwitch : AInteractableObject
     private float lifeTime;
     private float lifeTimer;
 
+    [SerializeField]
+    private GameObject lampOff;
+
+    [SerializeField]
+    private GameObject lampOn;
+
 
     public override void Interact(PlayerController player)
     {
@@ -24,6 +30,8 @@ public class LampSwitch : AInteractableObject
         {
             lifeTimer = 0;
             canInteract = false;
+            lampOff.SetActive(false);
+            lampOn.SetActive(true);
             Vector3 explosionPos = transform.position;
             Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
             foreach (Collider2D hit in colliders)
@@ -40,9 +48,11 @@ public class LampSwitch : AInteractableObject
         base.Update();
         lifeTimer += Time.deltaTime;
 
-        if(!canInteract && lifeTimer > lifeTime)
+        if (!canInteract && lifeTimer > lifeTime)
         {
             canInteract = true;
+            lampOff.SetActive(true);
+            lampOn.SetActive(false);
         }
     }
 
