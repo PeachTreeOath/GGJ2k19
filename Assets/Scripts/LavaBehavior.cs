@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class LavaBehavior : MonoBehaviour
 {
-   [SerializeField]
-   private float speed = 0.1f;
+   public float speed = 0.1f;
     private float accel = 0.01f;
    private const double LAVA_DAMAGE = 10;
    public bool lavaRising {get; set;}

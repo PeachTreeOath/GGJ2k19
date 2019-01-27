@@ -37,6 +37,10 @@ public class GameManager : Singleton<GameManager>
     {
         lava = FindObjectOfType<LavaBehavior>();
         players = new List<PlayerController>();
+        foreach (Hideable hide in FindObjectsOfType<Hideable>())
+        {
+            hide.Register();
+        }
     }
 
     // Update is called once per frame
@@ -128,14 +132,20 @@ public class GameManager : Singleton<GameManager>
 
         // Reset game
         gameStarted = false;
-
+        GameObject.Find("Lava").GetComponent<LavaBehavior>().speed = 0.1f;
+        PlatformToggle.instance.WipeRegistries();
         GameObject obj = GameObject.Find("Level2D");
-        if(obj != null)
+        if (obj != null)
             Destroy(obj);
         GameObject obj2 = GameObject.Find("Level2D(Clone)");
         if (obj2 != null)
             Destroy(obj2);
         Instantiate(levelPrefab);
+        foreach(Hideable hide in FindObjectsOfType<Hideable>())
+        {
+            hide.Register();
+        }
+        PlatformToggle.instance.DeactivatePlatformObjects();
         foreach (PlayerController player in players)
         {
             if (!player.playerAlive)
