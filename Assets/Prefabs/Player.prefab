@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 0}
   playerAlive: 0
+  playerSinking: 0
   playerHealth: 30
   heldObject: {fileID: 0}
   keyboardControlsOn: 0
@@ -64,6 +65,8 @@ MonoBehaviour:
   launchedMaxColliderDisableTime: 0.15
   nickname: 
   deviceID: -1
+  originalColliderSize: {x: 0, y: 0}
+  originalColliderOffset: {x: 0, y: 0}
 --- !u!212 &7460876419433399469
 SpriteRenderer:
   m_ObjectHideFlags: 0
