@@ -5,13 +5,14 @@ using TMPro;
 using NDream.AirConsole;
 using Newtonsoft.Json.Linq;
 
-public class PlatformerExampleLogic : MonoBehaviour {
+public class PlatformerExampleLogic : MonoBehaviour
+{
 
-	public GameObject playerPrefab;
+    public GameObject playerPrefab;
 
-	public Dictionary<int, PlayerController> players = new Dictionary<int, PlayerController> ();
+    public Dictionary<int, PlayerController> players = new Dictionary<int, PlayerController>();
 
-   private List<Color> playerColorsList = new List<Color>
+    private List<Color> playerColorsList = new List<Color>
    {
       new Color(217f/255f, 28f/255f, 28f/255f), // red
       new Color(0f/255f, 246f/255f, 255f/255f), // cyan
@@ -47,79 +48,105 @@ public class PlatformerExampleLogic : MonoBehaviour {
       new Color(192f/255f, 255f/255f, 141f/255f) // pale green
    };
 
-   private int playerSpawnNumber = 0;
+    private int playerSpawnNumber = 0;
 
-   public float spawnHeight = 2f;
+    public float spawnHeight = 2f;
 
-	void Awake () {
-		AirConsole.instance.onMessage += OnMessage;		
-		AirConsole.instance.onReady += OnReady;		
-		AirConsole.instance.onConnect += OnConnect;		
-	}
+    void Awake()
+    {
+        AirConsole.instance.onMessage += OnMessage;
+        AirConsole.instance.onReady += OnReady;
+        AirConsole.instance.onConnect += OnConnect;
+    }
 
-	void OnReady(string code){
-		//Since people might be coming to the game from the AirConsole store once the game is live, 
-		//I have to check for already connected devices here and cannot rely only on the OnConnect event 
-		List<int> connectedDevices = AirConsole.instance.GetControllerDeviceIds();
-		foreach (int deviceID in connectedDevices) {
-			AddNewPlayer (deviceID);
-		}
-	}
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        foreach (int device in AirConsole.instance.GetControllerDeviceIds())
+        {
+            if (!players[device].nickname.Equals(AirConsole.instance.GetNickname(device)))
+            {
+                players[device].nickname = AirConsole.instance.GetNickname(device);
+                players[device].GetComponentInChildren<TextMeshProUGUI>().text = players[device].nickname;
+            }
+        }
+    }
 
-	void OnConnect (int device){
-		AddNewPlayer (device);
-	}
 
-	private void AddNewPlayer(int deviceID){
+    void OnReady(string code)
+    {
+        //Since people might be coming to the game from the AirConsole store once the game is live, 
+        //I have to check for already connected devices here and cannot rely only on the OnConnect event 
+        List<int> connectedDevices = AirConsole.instance.GetControllerDeviceIds();
+        foreach (int deviceID in connectedDevices)
+        {
+            AddNewPlayer(deviceID);
+        }
+    }
 
-		if (players.ContainsKey (deviceID)) {
-			return;
-		}
+    void OnConnect(int device)
+    {
+        AddNewPlayer(device);
+    }
 
-		//Instantiate player prefab, store device id + player script in a dictionary
-		GameObject newPlayer = Instantiate (playerPrefab, SpawnZone.instance.GetSpawnLocation(), transform.rotation) as GameObject;
-		string nickname = AirConsole.instance.GetNickname(deviceID);
-		if (nickname != null)
-		{
-			newPlayer.GetComponentInChildren<TextMeshProUGUI>().text = nickname;
-		}
+    private void AddNewPlayer(int deviceID)
+    {
+
+        if (players.ContainsKey(deviceID))
+        {
+            return;
+        }
+
+        //Instantiate player prefab, store device id + player script in a dictionary
+        GameObject newPlayer = Instantiate(playerPrefab, SpawnZone.instance.GetSpawnLocation(), transform.rotation) as GameObject;
+        string nickname = AirConsole.instance.GetNickname(deviceID);
+        if (nickname != null)
+        {
+            newPlayer.GetComponentInChildren<TextMeshProUGUI>().text = nickname;
+        }
         PlayerController pc = newPlayer.GetComponent<PlayerController>();
         pc.nickname = nickname;
         pc.deviceID = deviceID;
-		players.Add(deviceID, pc);
-      newPlayer.GetComponent<SpriteRenderer>().color = GetPlayerColor();
-      // increases after player joins the level to be used for player colors
-      playerSpawnNumber++;
-   }
+        players.Add(deviceID, pc);
+        newPlayer.GetComponent<SpriteRenderer>().color = GetPlayerColor();
+        // increases after player joins the level to be used for player colors
+        playerSpawnNumber++;
+    }
 
-   void OnMessage (int from, JToken data){
-		Debug.Log ("message: " + data);
+    void OnMessage(int from, JToken data)
+    {
+        Debug.Log("message: " + data);
 
-		//When I get a message, I check if it's from any of the devices stored in my device Id dictionary
-		if (players.ContainsKey (from) && data["action"] != null) {
-			//I forward the command to the relevant player script, assigned by device ID
-			players [from].ButtonInput (data["action"].ToString());
-		}
-	}
+        //When I get a message, I check if it's from any of the devices stored in my device Id dictionary
+        if (players.ContainsKey(from) && data["action"] != null)
+        {
+            //I forward the command to the relevant player script, assigned by device ID
+            players[from].ButtonInput(data["action"].ToString());
+        }
+    }
 
-	void OnDestroy () {
-		if (AirConsole.instance != null) {
-			AirConsole.instance.onMessage -= OnMessage;		
-			AirConsole.instance.onReady -= OnReady;		
-			AirConsole.instance.onConnect -= OnConnect;		
-		}
-	}
+    void OnDestroy()
+    {
+        if (AirConsole.instance != null)
+        {
+            AirConsole.instance.onMessage -= OnMessage;
+            AirConsole.instance.onReady -= OnReady;
+            AirConsole.instance.onConnect -= OnConnect;
+        }
+    }
 
-   // get a player color from the list of player colors
-   private Color GetPlayerColor()
-   {
-      if (playerSpawnNumber < playerColorsList.Count)
-      {
-         return playerColorsList[playerSpawnNumber];
-      }
-      else
-      {
-         return new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
-      }
-   }
+    // get a player color from the list of player colors
+    private Color GetPlayerColor()
+    {
+        if (playerSpawnNumber < playerColorsList.Count)
+        {
+            return playerColorsList[playerSpawnNumber];
+        }
+        else
+        {
+            return new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+        }
+    }
 }
