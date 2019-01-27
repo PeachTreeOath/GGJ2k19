@@ -26,6 +26,7 @@ public class PlatformToggle : Singleton<PlatformToggle>
     {
        for (int i = 0; i < platformObjects.Length; i++)
        {
+            if(platformObjects[i])
           platformObjects[i].SetActive(true);
        }
     }

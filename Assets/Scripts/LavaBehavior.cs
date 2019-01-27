@@ -33,10 +33,9 @@ public class LavaBehavior : MonoBehaviour
    // basic lava expanding behavior
    private void Expand()
    {
-        collider2D.size = new Vector2(collider2D.size.x, collider2D.size.y * speed * Time.deltaTime);
+        collider2D.size = new Vector2(collider2D.size.x, collider2D.size.y + (speed * Time.deltaTime));
         lavaBottom.size = collider2D.size;
-        lavaBottom.gameObject.transform.position = Vector2.zero;
-        lavaTop.gameObject.transform.position = new Vector2(0, lavaBottom.bounds.size.y - lavaTop.bounds.extents.y);
+        lavaTop.gameObject.transform.position = new Vector2(0, lavaBottom.bounds.extents.y - lavaTop.size.y - .43f);
    }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -62,7 +61,7 @@ public class LavaBehavior : MonoBehaviour
 
     public void StopLava()
     {
-       lavaRising = false;
-       transform.localScale = new Vector3(transform.localScale.x, 1, 0);
+       //lavaRising = false;
+       //transform.localScale = new Vector3(transform.localScale.x, 1, 0);
     }
 }
