@@ -8,26 +8,37 @@ public class PlatformToggle : Singleton<PlatformToggle>
     private BoxCollider2D col;
 
     [SerializeField]
-    private GameObject[] platformObjects;
+    private List<GameObject> platformObjects = new List<GameObject>();
 
     public bool platformToggleOn { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < platformObjects.Length; i++)
-        {
-            platformObjects[i].SetActive(false);
+        DeactivatePlatformObjects();
+    }
+    public void WipeRegistries()
+    {
+        platformObjects.Clear();
+    }
+    public void Register(GameObject obj)
+    {
+        platformObjects.Add(obj);
+    }
+    public void DeactivatePlatformObjects()
+    {
+        foreach(GameObject obj in platformObjects)
+        { 
+            obj.SetActive(false);
         }
     }
 
     // turn on all the platform objects in the scene
     public void ActivatePlatformObjects()
     {
-       for (int i = 0; i < platformObjects.Length; i++)
-       {
-            if(platformObjects[i])
-          platformObjects[i].SetActive(true);
-       }
+        foreach (GameObject obj in platformObjects)
+        {
+            obj.SetActive(true);
+        }
     }
 }
