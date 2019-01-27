@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     public bool playerAlive;
 
     [SerializeField]
+    public bool playerSinking;
+
+    [SerializeField]
     public double playerHealth = 30;
 
     private bool leftButton;
@@ -77,7 +80,6 @@ public class PlayerController : MonoBehaviour
         spr = GetComponent<SpriteRenderer>();
         defaultColor = spr.color;
         anim = GetComponent<Animator>();
-        playerAlive = true;
         GameManager.instance.RegisterPlayer(this);
     }
 
@@ -228,21 +230,25 @@ public class PlayerController : MonoBehaviour
 
     public void takeDamage(double damageValue)
     {
-        float currentTime = Time.time;
-        if (currentTime >= damageTimer + 1)
+        if (gameObject.activeInHierarchy)
         {
-            damageTimer = currentTime;
-            Debug.Log("Player taking damage");
-            playerHealth -= damageValue;
-            if (playerHealth <= 0)
+            float currentTime = Time.time;
+            if (currentTime >= damageTimer + 1)
             {
-                AirConsole.instance.Message(deviceID, "sound:scream");
-                Debug.Log("Player dead");
-                PlayerDead();
-            }
-            else
-            {
-                AirConsole.instance.Message(deviceID, "sound:lava_burn");
+                damageTimer = currentTime;
+                Debug.Log("Player taking damage");
+                playerHealth -= damageValue;
+                if (playerHealth <= 0)
+                {
+                    AirConsole.instance.Message(deviceID, "sound:scream");
+                    Debug.Log("Player dead");
+                    playerSinking = true;
+                    PlayerDead();
+                }
+                else
+                {
+                    AirConsole.instance.Message(deviceID, "sound:lava_burn");
+                }
             }
         }
     }
@@ -298,16 +304,23 @@ public class PlayerController : MonoBehaviour
         {
             this.playerAlive = false;
 
-            gameObject.transform.Rotate(Vector3.back, 90f);
-            FloatBehavior fb = gameObject.AddComponent<FloatBehavior>();
-            fb.floatingTime = 5;
-            fb.sinkSpeed = 0.5f;
-            fb.sinkDelayTime = 0.75f;
-            fb.floatXMove = true;
-            fb.xMoveAmount = .005f;
+            if (playerSinking)
+            {
+                gameObject.transform.Rotate(Vector3.back, 90f);
+                FloatBehavior fb = gameObject.AddComponent<FloatBehavior>();
+                fb.floatingTime = 5;
+                fb.sinkSpeed = 0.5f;
+                fb.sinkDelayTime = 0.75f;
+                fb.floatXMove = true;
+                fb.xMoveAmount = .005f;
 
-            Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
-            canvas.enabled = false;
+                Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
+                canvas.enabled = false;
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
 
             AirConsole.instance.Message(deviceID, "view:dead_view");
             //AudioManager.instance.PlaySound("lava_burn");
