@@ -359,7 +359,7 @@ public class PlayerController : MonoBehaviour
 
         Canvas canvas = gameObject.GetComponentInChildren<Canvas>(true);
         canvas.enabled = true;
-
+        particleSystem.Stop();
         AirConsole.instance.Message(deviceID, "view:alive_view");
     }
 }
