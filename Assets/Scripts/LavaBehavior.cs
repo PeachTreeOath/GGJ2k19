@@ -51,4 +51,10 @@ public class LavaBehavior : MonoBehaviour
             Debug.Log("Lava collided with " + gameObject.name);
         }
     }
+
+    public void StopLava()
+    {
+       lavaRising = false;
+       transform.localScale = new Vector3(transform.localScale.x, 1, 0);
+    }
 }

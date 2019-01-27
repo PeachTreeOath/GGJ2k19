@@ -9,16 +9,23 @@ public class GameManager : Singleton<GameManager>
 {
     private const string CURRENT_PLAYERS_STRING = "Current Players: ";
 
-    bool gameStarted;
-
     private LavaBehavior lava;
 
     [SerializeField]
     private GameObject title;
 
-
     [SerializeField]
     private GameObject currentPlayers;
+
+    [SerializeField]
+    private GameObject victoryText;
+
+    [SerializeField]
+    private GameObject victorName;
+
+    bool gameStarted;
+
+    bool gameVictorySccreen;
 
     // Start is called before the first frame update
     void Start()
@@ -29,28 +36,78 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        // Start up game
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        if (!gameStarted && Input.GetKeyDown(KeyCode.Return))
+        if (!gameVictorySccreen)
         {
-            gameStarted = true;
+            // Start up game
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-            foreach (GameObject player in players)
+            // Current player count
+            TextMeshProUGUI currentPlayerText = currentPlayers.GetComponent<TextMeshProUGUI>();
+            currentPlayerText.text = CURRENT_PLAYERS_STRING + players.Length;
+
+            if (!gameStarted)
             {
-                Destroy(player.GetComponentInChildren<Canvas>());
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    StartUpGame(players);
+                }
             }
+            else if (players.Length == 1)
+            {
+                lava.StopLava();
 
-            Debug.Log("Starting Lava");
-            lava.lavaRising = true;
+                // Victory screen if only one player left
+                Debug.Log("Winner winner chicken dinner!");
+                gameVictorySccreen = true;
+                victoryText.SetActive(true);
 
-            Image ttleImage = title.GetComponent<Image>();
-            ttleImage.enabled = false;
+                TextMeshProUGUI victorNameText = victorName.GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI playerNameText = players[0].GetComponent<TextMeshProUGUI>();
+                if (playerNameText != null)
+                {
+                    victorName.SetActive(true);
+                    victorNameText.text = playerNameText.text;
+                }
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                RestartGame();
+            }
+        }
+    }
 
-            PlatformToggle.instance.ActivatePlatformObjects();
+    private void StartUpGame(GameObject[] players)
+    {
+        gameStarted = true;
+
+        foreach (GameObject player in players)
+        {
+            Destroy(player.GetComponentInChildren<Canvas>());
         }
 
-        // Current player count
-        Text currentPlayerText = currentPlayers.GetComponent<Text>();
-        currentPlayerText.text = CURRENT_PLAYERS_STRING + players.Length;
+        Debug.Log("Starting Lava");
+        lava.lavaRising = true;
+
+        Image titleImage = title.GetComponent<Image>();
+        titleImage.enabled = false;
+
+        PlatformToggle.instance.ActivatePlatformObjects();
+    }
+
+    private void RestartGame()
+    {
+        // Reset UI
+        gameVictorySccreen = false;
+        victoryText.SetActive(false);
+        victorName.SetActive(false);
+
+        Image titleImage = title.GetComponent<Image>();
+        titleImage.enabled = true;
+
+        // Reset game
+        gameStarted = false;
     }
 }
