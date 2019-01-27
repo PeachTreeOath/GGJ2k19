@@ -133,7 +133,7 @@ public class GameManager : Singleton<GameManager>
         if(obj != null)
             Destroy(obj);
         GameObject obj2 = GameObject.Find("Level2D(Clone)");
-        if (obj != null)
+        if (obj2 != null)
             Destroy(obj2);
         Instantiate(levelPrefab);
         foreach (PlayerController player in players)
