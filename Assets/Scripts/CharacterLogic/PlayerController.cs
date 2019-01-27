@@ -7,7 +7,7 @@ using NDream.AirConsole;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rigidBody;
-    private Collider2D col;
+    private BoxCollider2D col;
     private Animator anim;
     private SpriteRenderer spr;
 
@@ -64,11 +64,16 @@ public class PlayerController : MonoBehaviour
 
     public int MovementDirection { get; }
 
+    public Vector2 originalColliderSize;
+    public Vector2 originalColliderOffset;
+
 
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        col = GetComponent<Collider2D>();
+        col = GetComponent<BoxCollider2D>();
+        originalColliderSize = col.size;
+        originalColliderOffset = col.offset;
         spr = GetComponent<SpriteRenderer>();
         defaultColor = spr.color;
         anim = GetComponent<Animator>();
@@ -283,39 +288,44 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerDead()
     {
-       // if (playerAlive)
-       // {
+        if (playerAlive)
+        {
             this.playerAlive = false;
-            gameObject.layer = LayerMask.NameToLayer("HiddenLayer");
-            gameObject.SetActive(false);
 
-            //gameObject.transform.Rotate(Vector3.back, 90f);
-            //FloatBehavior fb = gameObject.AddComponent<FloatBehavior>();
-            //fb.floatingTime = 5;
-            //fb.sinkSpeed = 0.5f;
-            //fb.sinkDelayTime = 0.75f;
-            //fb.floatXMove = true;
-            //fb.xMoveAmount = .005f;
+            gameObject.transform.Rotate(Vector3.back, 90f);
+            FloatBehavior fb = gameObject.AddComponent<FloatBehavior>();
+            fb.floatingTime = 5;
+            fb.sinkSpeed = 0.5f;
+            fb.sinkDelayTime = 0.75f;
+            fb.floatXMove = true;
+            fb.xMoveAmount = .005f;
 
-            //Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
-            //if (canvas != null)
-            //{
-            //    canvas.enabled = false;
-            //}
+            Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
+            canvas.enabled = false;
 
             AirConsole.instance.Message(deviceID, "view:dead_view");
 
             AudioManager.instance.PlaySound("lava_burn");
-       // }
+       }
     }
 
     public void PlayerAlive()
     {
         this.playerAlive = true;
+        this.playerHealth = 30;
 
-        // Hide Player
+        // Unhide Player
+        gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         gameObject.layer = LayerMask.NameToLayer("Player");
         gameObject.SetActive(true);
+
+        col.size = originalColliderSize;
+        col.offset = originalColliderOffset;
+
+        Destroy(gameObject.GetComponent<FloatBehavior>());
+
+        Canvas canvas = gameObject.GetComponentInChildren<Canvas>(true);
+        canvas.enabled = true;
 
         AirConsole.instance.Message(deviceID, "view:alive_view");
     }
