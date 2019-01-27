@@ -16,10 +16,19 @@ public class LavaBehavior : MonoBehaviour
     [SerializeField]
     float offset = .8f;
 
+
+    private void OnEnable()
+    {
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         collider2D = gameObject.GetComponent<BoxCollider2D>();
+        collider2D.size = new Vector2(collider2D.size.x, 1);
+        lavaBottom.size = collider2D.size;
+        lavaTop.gameObject.transform.position = new Vector2(0, lavaBottom.bounds.extents.y - lavaTop.size.y - offset);
     }
 
     // Update is called once per frame
