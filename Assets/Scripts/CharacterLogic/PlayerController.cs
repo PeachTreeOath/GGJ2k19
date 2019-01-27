@@ -129,6 +129,7 @@ public class PlayerController : MonoBehaviour
             {
                 rightButton = false;
                 leftButton = false;
+                anim.SetBool("isRunning", false);
             }
             if (Input.GetKeyDown(KeyCode.F))
             {
