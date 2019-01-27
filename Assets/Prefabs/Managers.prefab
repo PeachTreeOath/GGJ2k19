@@ -102,6 +102,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
 --- !u!81 &503652697
 AudioListener:
   m_ObjectHideFlags: 0
