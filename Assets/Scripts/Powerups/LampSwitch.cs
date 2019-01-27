@@ -32,7 +32,7 @@ public class LampSwitch : AInteractableObject
             canInteract = false;
             lampOff.SetActive(false);
             lampOn.SetActive(true);
-            Vector3 explosionPos = transform.position;
+            Vector3 explosionPos = player.gameObject.transform.position;
             Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
             foreach (Collider2D hit in colliders)
             {
@@ -40,6 +40,12 @@ public class LampSwitch : AInteractableObject
 
                 if (rb != null)
                     rb.AddExplosionForce(power, explosionPos, radius, upwardsMod);
+                BoxCollider2D[] playerColliders = player.gameObject.GetComponentsInChildren<BoxCollider2D>(true);
+                player.launched = true;
+                foreach (BoxCollider2D collider in playerColliders)
+                {
+                    collider.enabled = false;
+                }
             }
         }
     }
