@@ -244,6 +244,7 @@ public class PlayerController : MonoBehaviour
     {
         if (gameObject.activeInHierarchy)
         {
+            if(!particleSystem.isPlaying)
             particleSystem.Play();
             onFireTimer = Time.time;
             float currentTime = Time.time;
