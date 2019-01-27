@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using NDream.AirConsole;
 using Newtonsoft.Json.Linq;
 
@@ -8,7 +9,7 @@ public class PlatformerExampleLogic : MonoBehaviour {
 
 	public GameObject playerPrefab;
 
-	public Dictionary<int, PlayerController> players = new Dictionary<int, PlayerController> ();
+	public Dictionary<int, PlayerController> players = new Dictionary<int, PlayerController> (); 
 
 public float spawnHeight = 2f;
 
@@ -37,13 +38,11 @@ public float spawnHeight = 2f;
 			return;
 		}
 
-      //Instantiate player prefab, store device id + player script in a dictionary
-      //GameObject newPlayer = Instantiate (playerPrefab, SpawnZone.instance.GetSpawnLocation(), transform.rotation) as GameObject;
-      //players.Add(deviceID, newPlayer.GetComponent<PlayerController>());
-      GameObject newPlayer = Instantiate(playerPrefab, SpawnZone.instance.GetSpawnLocation(), transform.rotation) as GameObject;
-      players.Add(deviceID, newPlayer.GetComponent<PlayerController>());
-      newPlayer.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
-   }
+		//Instantiate player prefab, store device id + player script in a dictionary
+		GameObject newPlayer = Instantiate (playerPrefab, SpawnZone.instance.GetSpawnLocation(), transform.rotation) as GameObject;
+		newPlayer.GetComponentInChildren<TextMeshProUGUI>().text = AirConsole.instance.GetNickname(deviceID);
+		players.Add(deviceID, newPlayer.GetComponent<PlayerController>());
+	}
 
 	void OnMessage (int from, JToken data){
 		Debug.Log ("message: " + data);
@@ -62,9 +61,4 @@ public float spawnHeight = 2f;
 			AirConsole.instance.onConnect -= OnConnect;		
 		}
 	}
-
-   void initializePlayerColors()
-   {
-
-   }
 }

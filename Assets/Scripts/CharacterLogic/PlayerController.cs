@@ -5,7 +5,7 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rigidBody;
+    public Rigidbody2D rigidBody;
     private Collider2D col;
 
     [SerializeField]
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool collidingWithWallLeft;
     private bool collidingWithWallRight;
     private float jumpTimer;
-    private bool grounded;
+    public bool grounded {get; set;}
     public AHoldableObject heldObject;
     private Color defaultColor;
 
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     public bool facingRight = true;
 
     [SerializeField]
-    private float groundedVDelta = 0.01f;
+    public float groundedVDelta = 0.01f;
 
     [SerializeField]
     private float playerSpeed = 1f;
@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour
 
                 foreach(Collider2D item in colliders)
                 {
-                    if(item && item.gameObject.tag == "Interactable")
+                    if (item && item.gameObject.tag == "Interactable")
                     {
                         item.gameObject.GetComponent<AInteractableObject>().Interact(this);
                     }
@@ -223,42 +223,6 @@ public class PlayerController : MonoBehaviour
                 gameObject.GetComponent<SpriteRenderer>().color = defaultColor;
                 interacted = false;
                 interactTimer = 0;
-            }
-        }
-    }
-
-    //Track if the player capsule is currently inside the transparent sphere or not
-    void OnTriggerEnter2d(Collider2D trigger)
-    {
-        if (trigger.tag == "PlatformSphere")
-        {
-            isInSphere = true;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D trigger)
-    {
-        if (trigger.tag == "PlatformSphere")
-        {
-            isInSphere = false;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Wall")
-        {
-            grounded = false;
-        }
-    }
-
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Wall")
-        {
-            if (Math.Abs(rigidBody.velocity.y) <= groundedVDelta)
-            {
-                grounded = true;
             }
         }
     }
