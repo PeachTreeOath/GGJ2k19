@@ -124,7 +124,7 @@ MonoBehaviour:
   heldObject: {fileID: 0}
   keyboardControlsOn: 0
   facingRight: 1
-  groundedVDelta: 0.01
+  groundedVDelta: 2
   playerSpeed: 3.5
   jumpForce: 20
   initJumpForce: 400
