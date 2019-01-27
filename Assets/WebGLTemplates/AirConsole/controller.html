@@ -93,8 +93,19 @@
       var me = this;
       me.airconsole = new AirConsole({"orientation": "landscape", "synchronize_time" : "true"});
 
-      me.airconsole.onMessage = function(from, data) {
+
+	  me.airconsole.onMessage = function(from, data) {
         console.log("onMessage", from, data);
+
+		// Check if the data, we sent, contains view
+	    if (data) {
+		  if (data == "view:dead_view"){
+		    showView("dead_view");
+		  } 
+		  else if (data == "view:alive_view"){
+		  	  showView("alive_view");
+		  }
+		}
       };
 
       /*
@@ -120,7 +131,11 @@
           }
         }
       }
+
+	  showView("alive_view");
     }
+
+	
 
     // function jumpButtonImagePressed() {
     //   // document.getElementById("jump-button").style.backgroundColor = "red";
@@ -134,6 +149,21 @@
       this.airconsole.message(AirConsole.SCREEN, {"action": msg});
     };
 
+    function showView(id){
+	  var view = document.getElementById(id);
+	  console.log("Attempting to show view: " + id);
+	  var all_views = document.getElementsByClassName('view');
+      // Hide all containers
+	  for (var i=0; i<all_views.length; i++) {
+	    console.log("all_views[" + i + "]: " + all_views[i].id)
+        all_views[i].style.display = 'none';
+	  }
+  
+	  // Show container
+	  if (view != null){
+	    view.style.display = 'block';
+	  }
+	};
   </script>
 
  
