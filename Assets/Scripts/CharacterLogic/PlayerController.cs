@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     public bool keyboardControlsOn;
 
     public bool facingRight = true;
+    public bool launched = false;
 
     [SerializeField]
     public float groundedVDelta = 0.01f;
@@ -52,6 +53,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float maxJumpTime = .2f;
+    private float launchedColliderDisableTime = 0;
+    [SerializeField]
+    private float launchedMaxColliderDisableTime = .2f;
 
     public string nickname = "";
     public int deviceID = -1;
@@ -79,6 +83,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (launched && launchedColliderDisableTime < launchedMaxColliderDisableTime)
+        {
+            launchedColliderDisableTime += Time.deltaTime;
+        }
+        else if (launched && launchedColliderDisableTime >= launchedMaxColliderDisableTime)
+        {
+            launched = false;
+            launchedColliderDisableTime = 0;
+            BoxCollider2D[] colliders = this.gameObject.GetComponentsInChildren<BoxCollider2D>(true);
+            foreach (BoxCollider2D collider in colliders)
+            {
+                collider.enabled = true;
+            }
+        }
+        
         if (playerAlive)
         {
             GetKeyboardInput();
