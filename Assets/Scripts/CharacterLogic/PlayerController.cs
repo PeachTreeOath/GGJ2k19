@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
         originalColliderOffset = col.offset;
         spr = GetComponent<SpriteRenderer>();
         defaultColor = spr.color;
+        playerAlive = true;
         anim = GetComponent<Animator>();
         GameManager.instance.RegisterPlayer(this);
     }
@@ -240,7 +241,6 @@ public class PlayerController : MonoBehaviour
                 playerHealth -= damageValue;
                 if (playerHealth <= 0)
                 {
-                    AirConsole.instance.Message(deviceID, "sound:scream");
                     Debug.Log("Player dead");
                     playerSinking = true;
                     PlayerDead();
@@ -321,7 +321,7 @@ public class PlayerController : MonoBehaviour
             {
                 gameObject.SetActive(false);
             }
-
+            AirConsole.instance.Message(deviceID, "sound:scream");
             AirConsole.instance.Message(deviceID, "view:dead_view");
             //AudioManager.instance.PlaySound("lava_burn");
        }
