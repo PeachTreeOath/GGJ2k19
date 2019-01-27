@@ -14,7 +14,6 @@ public class FeetBehavior : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("EXIT");
         if (collision.gameObject.tag == "Wall")
         {
                 playerController.grounded = false;
@@ -23,7 +22,6 @@ public class FeetBehavior : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("STAY");
         if (collision.gameObject.tag == "Wall")
         {
             if (Math.Abs(playerController.rigidBody.velocity.y) <= playerController.groundedVDelta)
