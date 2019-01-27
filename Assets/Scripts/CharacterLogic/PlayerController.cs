@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     private float damageTimer;
     private bool interacted;
 
+    private float onFireTimer;
+
     public bool keyboardControlsOn;
 
     public bool facingRight = true;
@@ -70,9 +72,13 @@ public class PlayerController : MonoBehaviour
     public Vector2 originalColliderSize;
     public Vector2 originalColliderOffset;
 
+    public ParticleSystem particleSystem;
+
 
     private void Start()
     {
+        particleSystem = GetComponentInChildren<ParticleSystem>();
+        particleSystem.Stop();
         rigidBody = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         originalColliderSize = col.size;
@@ -104,6 +110,11 @@ public class PlayerController : MonoBehaviour
                 collider.enabled = true;
             }
         }
+
+        //if (onFireTimer+5 > Time.time && particleSystem.isPlaying)
+        //{
+        //    particleSystem.Stop();
+        //}
         
         if (playerAlive)
         {
@@ -232,12 +243,15 @@ public class PlayerController : MonoBehaviour
     {
         if (gameObject.activeInHierarchy)
         {
+            particleSystem.Play();
+            onFireTimer = Time.time;
             float currentTime = Time.time;
             if (currentTime >= damageTimer + 1)
             {
                 damageTimer = currentTime;
                 Debug.Log("Player taking damage");
                 playerHealth -= damageValue;
+
                 if (playerHealth <= 0)
                 {
                     AirConsole.instance.Message(deviceID, "sound:scream");
