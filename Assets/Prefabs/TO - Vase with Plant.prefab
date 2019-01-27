@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 7836538630501450112, guid: ac8036589aa274fde99cb3722e438771,
         type: 3}
       propertyPath: m_Name
-      value: TO Vase with Plant
+      value: TO - Vase with Plant
       objectReference: {fileID: 0}
     - target: {fileID: 5298410937996767391, guid: ac8036589aa274fde99cb3722e438771,
         type: 3}
@@ -73,5 +73,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 092b82d1b1f968549ac1ecdb4f918678,
         type: 3}
+    - target: {fileID: 4502074447356813773, guid: ac8036589aa274fde99cb3722e438771,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502074447356813773, guid: ac8036589aa274fde99cb3722e438771,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.39
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac8036589aa274fde99cb3722e438771, type: 3}
