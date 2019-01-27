@@ -277,7 +277,7 @@ public class PlayerController : MonoBehaviour
         Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
         if (canvas != null)
         {
-            Destroy(canvas);
+            canvas.enabled = false;
         }
         
         AirConsole.instance.Message(deviceID, "view:dead_view");
