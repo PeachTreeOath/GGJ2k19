@@ -88,6 +88,8 @@ public class GameManager : Singleton<GameManager>
                             victorNameText.color = playerColor;
                         }
                     }
+
+                    AirConsole.instance.Message(alivePlayers[0].deviceID, "view:victory_view");
                 }
                 else
                 {
@@ -169,6 +171,14 @@ public class GameManager : Singleton<GameManager>
     public void RegisterPlayer(PlayerController player)
     {
         players.Add(player);
+        if (!gameEnd && !gameStarted)
+        {
+            player.playerAlive = true;
+        }
+        else
+        {
+            player.PlayerDead();
+        }
     }
 
     public void RemovePlayer(PlayerController player)

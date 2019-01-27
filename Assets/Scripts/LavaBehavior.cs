@@ -5,7 +5,7 @@ using UnityEngine;
 public class LavaBehavior : MonoBehaviour
 {
    public float speed = 0.1f;
-    private float accel = 0.01f;
+    private float accel = 0.02f;
    private const double LAVA_DAMAGE = 10;
    public bool lavaRising {get; set;}
    BoxCollider2D collider2D;
@@ -13,11 +13,22 @@ public class LavaBehavior : MonoBehaviour
     SpriteRenderer lavaTop;
     [SerializeField]
     SpriteRenderer lavaBottom;
+    [SerializeField]
+    float offset = .8f;
+
+
+    private void OnEnable()
+    {
+
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         collider2D = gameObject.GetComponent<BoxCollider2D>();
+        collider2D.size = new Vector2(collider2D.size.x, 1);
+        lavaBottom.size = collider2D.size;
+        lavaTop.gameObject.transform.position = new Vector2(0, lavaBottom.bounds.extents.y - lavaTop.size.y - offset);
     }
 
     // Update is called once per frame
@@ -35,7 +46,7 @@ public class LavaBehavior : MonoBehaviour
    {
         collider2D.size = new Vector2(collider2D.size.x, collider2D.size.y + (speed * Time.deltaTime));
         lavaBottom.size = collider2D.size;
-        lavaTop.gameObject.transform.position = new Vector2(0, lavaBottom.bounds.extents.y - lavaTop.size.y - .43f);
+        lavaTop.gameObject.transform.position = new Vector2(0, lavaBottom.bounds.extents.y - lavaTop.size.y - offset);
    }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -64,6 +75,6 @@ public class LavaBehavior : MonoBehaviour
        lavaRising = false;
         collider2D.size = new Vector2(collider2D.size.x, 1);
         lavaBottom.size = collider2D.size;
-        lavaTop.gameObject.transform.position = new Vector2(0, lavaBottom.bounds.extents.y - lavaTop.size.y - .43f);
+        lavaTop.gameObject.transform.position = new Vector2(0, lavaBottom.bounds.extents.y - lavaTop.size.y - offset);
     }
 }
