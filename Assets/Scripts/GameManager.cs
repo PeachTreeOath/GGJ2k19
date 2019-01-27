@@ -10,7 +10,7 @@ using System.Linq;
 public class GameManager : Singleton<GameManager>
 {
     private const string CURRENT_PLAYERS_STRING = "Current Players: ";
-
+    public GameObject levelPrefab;
     private LavaBehavior lava;
 
     [SerializeField]
@@ -128,6 +128,14 @@ public class GameManager : Singleton<GameManager>
 
         // Reset game
         gameStarted = false;
+
+        GameObject obj = GameObject.Find("Level2D");
+        if(obj != null)
+            Destroy(obj);
+        GameObject obj2 = GameObject.Find("Level2D(Clone)");
+        if (obj != null)
+            Destroy(obj2);
+        Instantiate(levelPrefab);
         foreach (PlayerController player in players)
         {
             if (!player.playerAlive)
