@@ -61,7 +61,9 @@ public class LavaBehavior : MonoBehaviour
 
     public void StopLava()
     {
-       //lavaRising = false;
-       //transform.localScale = new Vector3(transform.localScale.x, 1, 0);
+       lavaRising = false;
+        collider2D.size = new Vector2(collider2D.size.x, 1);
+        lavaBottom.size = collider2D.size;
+        lavaTop.gameObject.transform.position = new Vector2(0, lavaBottom.bounds.extents.y - lavaTop.size.y - .43f);
     }
 }
